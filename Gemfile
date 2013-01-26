@@ -10,16 +10,51 @@ gem 'rails', '3.2.9'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
-  gem 'coffee-rails', '~> 3.2.1'
+  gem 'less-rails'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  # gem 'therubyracer', :platforms => :ruby
+  gem 'therubyracer', :platforms => :ruby
 
   gem 'uglifier', '>= 1.0.3'
 end
 
+group 'development','test' do
+  gem 'pry-rails'
+  gem 'pry-doc'
+  gem 'rspec'
+  gem 'rspec-rails'
+  gem 'spork'
+  gem 'guard-spork'
+  gem 'guard-rspec'
+  gem 'factory_girl_rails'
+  gem 'database_cleaner'
+  gem 'simplecov', :require => false
+end
+
+# AWS
+gem "aws-sdk"
+gem "aws-ses", :require => 'aws/ses'
+gem 'mongoid-paperclip', :require => 'mongoid_paperclip'
+
+# javascript
+gem 'coffee-rails', '~> 3.2.1'
 gem 'jquery-rails'
+
+# server
+gem 'thin'
+
+# database
+gem 'mongoid'
+gem 'bson_ext'
+
+gem 'kaminari'
+
+# authentication
+gem 'authlogic'
+
+# statuses
+gem 'aasm'
+
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
