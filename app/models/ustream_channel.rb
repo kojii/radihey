@@ -1,0 +1,2 @@
+class UstreamChannel < Channel
+end

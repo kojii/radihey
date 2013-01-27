@@ -1,0 +1,2 @@
+class RadikoChannel < Channel
+end
