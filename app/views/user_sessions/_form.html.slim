@@ -1,0 +1,17 @@
+= form_for @user_session do |f|
+  - if @user_session.errors.any?
+    #error_explanation
+      h2= t("mongoid.errors.models.user_session.title", count: @user_session.errors.count)
+      ul
+        - @user_session.errors.full_messages.each do |msg|
+          li= msg
+
+  = f.label t('.email') do
+    span= t('.email')
+    = f.text_field(:email)
+
+  = f.label t('.password') do
+    span= t('.password')
+    = f.password_field(:password)
+
+  = f.submit

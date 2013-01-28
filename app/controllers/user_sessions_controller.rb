@@ -32,7 +32,6 @@ class UserSessionsController < ApplicationController
 
 private
   def logout
-    pop_auth
     if login_user_session
       login_user_session.destroy
     end

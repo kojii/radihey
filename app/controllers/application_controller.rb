@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-  helper_method :logged_in?, :login_user
+  helper_method :logged_in?, :login_user, :parse_message
 
   private
   def logged_in?
@@ -21,5 +21,12 @@ class ApplicationController < ActionController::Base
     rescue Exception => e
     end
     @login_user_session
+  end
+
+  def parse_message(temp, opt={ })
+    return unless temp
+    return if temp.blank?
+    (ERB::Util.h temp).gsub(/(https?\:\/\/[-_.!~*\'()a-zA-Z0-9;\/?:\@&=+\$,%#]+)/,
+                             "<a href='\\1' target='_blank'>\\1</a>").gsub(%r{(\r\n|\n)}, "<br/>").html_safe
   end
 end
