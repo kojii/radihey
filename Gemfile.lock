@@ -240,6 +240,7 @@ DEPENDENCIES
   less-rails
   mongoid
   mongoid-paperclip
+  pry
   pry-doc
   pry-rails
   rails (= 3.2.9)

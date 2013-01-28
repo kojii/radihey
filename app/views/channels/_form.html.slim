@@ -1,0 +1,44 @@
+= form_for @channel, url: @channel.new_record? ? channels_path : channel_path(login_user.username, @channel.id) do |f|
+  - if @channel.errors.any?
+    #error_explanation
+      h2= t("mongoid.errors.models.channel.title", count: @channel.errors.count)
+      ul
+        - @channel.errors.full_messages.each do |msg|
+          li= msg
+
+  = f.label t('.title') do
+    span= t('.title')
+    = f.text_field(:title)
+
+  = f.label t('.description') do
+    span= t('.description')
+    = f.text_field(:description)
+
+  / 新規作成の場合
+  - if @channel.new_record?
+    = f.label t('.type') do
+      span= t('.type')
+      = f.radio_button(:_type, 'ustream_channel', checked: true)
+      = f.radio_button(:_type, 'radiko_channel')
+
+    = label_tag t('.url'), id: 'label-channel-url' do
+      span= t('.url')
+      = text_field_tag('channel[url]')
+
+    = label_tag t('.station_id'), id: 'label-channel-station-id' do
+      span= t('.station_id')
+      = select_tag('channel[station_id]', options_for_select(Station.all.map{|s| [s.name, s.id.to_s]}))
+
+  / Ustreamの場合
+  - if @channel._type == UstreamChannel.to_s
+    = f.label t('.url') do
+      span= t('.url')
+      = f.text_field(:url)
+
+  / Radikoの場合
+  - if @channel._type == RadikoChannel.to_s
+    = f.label t('.station_id') do
+      span= t('.station_id')
+      = f.select(:station_id, Station.all.map{|s| [s.name, s.id]}, 'selected' => @channel.station_id)
+
+  = f.submit

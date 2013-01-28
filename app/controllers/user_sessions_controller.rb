@@ -16,7 +16,7 @@ class UserSessionsController < ApplicationController
     if @user_session.save
       headers["P3P"] = "CP='IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT'"
       notice         = parse_message I18n.t "controllers.user_sessions.login"
-      return redirect_to root_path
+      return redirect_to home_path(login_user.username)
     end
     # ログイン失敗
     render :action => :new , :notice => I18n.t("controllers.user_sessions.fail")

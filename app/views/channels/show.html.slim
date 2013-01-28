@@ -1,0 +1,6 @@
+h1 Show Channel
+p= @channel.title
+p= @channel.description
+- if my_page?
+  p= link_to 'Edit Channel', edit_channel_path(login_user.username, @channel.id)
+  p= link_to 'Delete Channel', channel_path(login_user.username), confirm: 'OK?', :method => :delete

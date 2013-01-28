@@ -12,4 +12,10 @@ RadiheyRails::Application.routes.draw do
   resources :users do
     get :pre_registered
   end
+
+  scope ":username" do
+    resources :channels
+  end
+
+  match '/:username', to: 'channels#index', :as => :home
 end

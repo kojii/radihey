@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-  helper_method :logged_in?, :login_user, :parse_message
+  helper_method :logged_in?, :login_user, :parse_message, :current_user
 
   private
   def logged_in?
@@ -28,5 +28,28 @@ class ApplicationController < ActionController::Base
     return if temp.blank?
     (ERB::Util.h temp).gsub(/(https?\:\/\/[-_.!~*\'()a-zA-Z0-9;\/?:\@&=+\$,%#]+)/,
                              "<a href='\\1' target='_blank'>\\1</a>").gsub(%r{(\r\n|\n)}, "<br/>").html_safe
+  end
+
+  def login_user_only
+    return render_404 unless logged_in?
+  end
+
+  def render_404
+    respond_to do |format|
+      format.html { render template: 'errors/error_404', layout: 'layouts/application', status: 404 }
+      format.all { render nothing: true, status: 404 }
+    end
+  end
+
+  def current_user
+    return unless params[:username]
+
+    # current_user がセットされていなければ、usernameからユーザを取得するのを試みる
+    @current_user ||= User.find_by_symbol(params[:username])
+
+    # ユーザが存在しなければ404に飛ばす
+    return raise ActionController::RoutingError.new('Not Found') unless @current_user
+
+    return @current_user
   end
 end
