@@ -6,8 +6,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.create(params[:user])
-    if @user.save
+    if @user = User.create(params[:user])
       redirect_to user_pre_registered_path(@user.id)
     else
       flash.now[:notice] = I18n.t("controllers.users.create.invalid_parameter")

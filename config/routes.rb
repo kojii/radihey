@@ -18,4 +18,10 @@ RadiheyRails::Application.routes.draw do
   end
 
   match '/:username', to: 'channels#index', :as => :home
+
+  # 404ページ # develop環境で表示テストをするには、このunlessを外してください。
+  # ApplicationController内のunlessも外してください。
+  unless Rails.application.config.consider_all_requests_local
+    match '*not_found', to: 'errors#error_404'
+  end
 end
