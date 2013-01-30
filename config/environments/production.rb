@@ -28,7 +28,7 @@ RadiheyRails::Application.configure do
   # config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect' # for nginx
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
-  # config.force_ssl = true
+  config.force_ssl = true
 
   # See everything in the log (default is :info)
   # config.log_level = :debug
@@ -63,5 +63,5 @@ RadiheyRails::Application.configure do
 
   config.action_mailer.delivery_method = :ses
 
-  config.force_ssl = true
+  config.action_controller.asset_host = "//#{ENV['FOG_DIRECTORY']}.s3.amazonaws.com"
 end
