@@ -21,9 +21,9 @@
       = f.radio_button(:_type, 'ustream_channel', checked: true)
       = f.radio_button(:_type, 'radiko_channel')
 
-    = label_tag t('.url'), id: 'label-channel-url' do
-      span= t('.url')
-      = text_field_tag('channel[url]')
+    = label_tag t('.ust_uid'), id: 'label-channel-ust-uid' do
+      span= t('.ust_uid')
+      = text_field_tag('channel[ust_uid]')
 
     = label_tag t('.station_id'), id: 'label-channel-station-id' do
       span= t('.station_id')
@@ -31,9 +31,9 @@
 
   / Ustreamの場合
   - if @channel._type == UstreamChannel.to_s
-    = f.label t('.url') do
-      span= t('.url')
-      = f.text_field(:url)
+    = f.label t('.ust_uid') do
+      span= t('.ust_uid')
+      = f.text_field(:ust_uid)
 
   / Radikoの場合
   - if @channel._type == RadikoChannel.to_s

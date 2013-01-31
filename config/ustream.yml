@@ -1,0 +1,14 @@
+defaults: &defaults
+  key: '310E7E09463F28EEE7F9F9805A801337'
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+staging:
+  <<: *defaults
+
+production:
+  <<: *defaults
