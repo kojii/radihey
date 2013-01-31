@@ -11,6 +11,7 @@ gem 'rails', '3.2.9'
 # in production environments by default.
 group :assets do
   gem 'less-rails'
+  gem 'twitter-bootstrap-rails'
   gem 'therubyracer', :platforms => :ruby
   gem 'uglifier', '>= 1.0.3'
   gem "asset_sync"

@@ -1,10 +1,21 @@
-h1 Show Channel
-p= @channel.title
-p= @channel.description
+.main
+  h1= @channel.title
+  p= @channel.description
 
-- if @channel._type == UstreamChannel.to_s
-  p= @channel.embed_tag.html_safe
+  - if @channel._type == UstreamChannel.to_s
+    .video-and-buttons.clearfix
+      #video
+        p= @channel.embed_tag.html_safe
+      #buttons
+        = image_tag('he-button.png', class: 'button')
+        = image_tag('he-button.png', class: 'button')
+        = image_tag('he-button.png', class: 'button')
+        = image_tag('he-button.png', class: 'button')
+        = image_tag('he-button.png', class: 'button')
+        = image_tag('he-button.png', class: 'button')
 
-- if my_page?
-  p= link_to 'Edit Channel', edit_channel_path(login_user.username, @channel.id)
-  p= link_to 'Delete Channel', channel_path(login_user.username), confirm: 'OK?', :method => :delete
+  - if my_page?
+    p
+      = link_to 'Edit Channel', edit_channel_path(login_user.username, @channel.id)
+      span.separator
+      = link_to 'Delete Channel', channel_path(login_user.username), confirm: 'OK?', :method => :delete
