@@ -54,3 +54,44 @@ ja:
       send_activate_mail:
         subject: '[Radihey] 本登録完了'
   copy: '&copy;ラジへぇ 2013'
+
+  mongoid:
+    attributes:
+      user:
+        email: 'メールアドレス'
+        username: 'ユーザ名'
+        password: 'パスワード'
+        password_confirmation: 'パスワード（確認）'
+      channel:
+        title: 'チャンネルのタイトル'
+        description: 'チャンネルの説明'
+        type: 'チャンネルの種類'
+        ust_uid: 'UstreamのユーザID'
+        station_id: 'ラジオ放送局'
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              blank: 'は必須項目です。'
+              too_short: 'パスワードが短かすぎます。'
+            username:
+              blank: 'は必須項目です。'
+              too_short: 'パスワードが短かすぎます。'
+            password:
+              blank: 'は必須項目です。'
+              too_short: 'パスワードが短かすぎます。'
+              confirmation: '確認用のパスワードが一致していません。'
+            password_confirmation:
+              too_short: '確認用のパスワードが短かすぎます。'
+
+  models:
+    user:
+      you_can_use: "には、半角英数字または _（アンダーバー）または .（ドット）を使用してください。"
+      more_than_3characters: "は3文字以上入力してください。"
+      reserved_words: "そのユーザー名は使用できません。"
+
+  authlogic:
+    error_messages:
+      email_invalid: 'が正しくありません。'
+      login_invalid: 'には、英数字か特定の記号（ . - _ @ ）のみ使えます。'
