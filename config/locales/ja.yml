@@ -1,4 +1,49 @@
 ja:
+  components:
+    sidebar:
+      channels: 'チャンネル'
+    header:
+      join: '新規登録'
+      login: 'ログイン'
+      logout: 'ログアウト'
+      account_settings: 'アカウント設定'
+
+  user_sessions:
+    new:
+      title: 'ログイン'
+    form:
+      email: 'メールアドレス'
+      password: 'パスワード'
+      login: 'ログインする'
+
+  users:
+    new:
+      title: '新規ユーザ登録'
+    edit:
+      title: 'アカウント設定'
+    form:
+      email: 'メールアドレス'
+      new_username: '希望するユーザ名'
+      username: 'ユーザ名'
+      password: 'パスワード'
+      password_confirmation: 'パスワード（確認）'
+      create: '利用規約に同意して新規登録する'
+      update: '保存する'
+      not_shown: '非表示になっています'
+
+  channels:
+    new:
+      title: 'チャンネルの作成'
+    edit:
+      title: 'チャンネルの編集'
+    form:
+      title: 'チャンネルのタイトル'
+      description: 'チャンネルの説明'
+      type: 'チャンネルの種類'
+      ust_uid: 'UstreamのユーザID'
+      station_id: 'ラジオ放送局'
+      create: 'チャンネルを作成する'
+      update: '保存する'
   mailers:
     notifier:
       default_from: 'miyake@growmonth.ly'
@@ -6,3 +51,4 @@ ja:
         subject: '[Radihey] 仮登録完了'
       send_activate_mail:
         subject: '[Radihey] 本登録完了'
+  copy: '&copy;ラジへぇ 2013'

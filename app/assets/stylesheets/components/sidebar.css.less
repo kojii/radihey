@@ -1,17 +1,17 @@
 @import "mixins.css.less";
 @import "variables.css.less";
 .sidebar-nav {
-  padding: 9px 0;
-  background-color: rgba(0,0,0,0.05);
-  .shadowed-box(0 1px 3px rgba(0, 0, 0, 0.3) inset);
-  border: none;
+  .radihey-well();
   .nav {
     li {
-      a:hover {
-        color: @font_color_in_negative_bg;
-        background-color: @selected_link_bg_color;
-        font-weight: bold;
-        text-shadow: none;
+      a {
+        color: @font_color_link;
+        &:hover {
+          color: @font_color_in_negative_bg;
+          background-color: @selected_nav_bg_color;
+          font-weight: bold;
+          text-shadow: none;
+        }
       }
     }
   }

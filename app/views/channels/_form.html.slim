@@ -1,4 +1,4 @@
-= form_for @channel, url: @channel.new_record? ? channels_path : channel_path(login_user.username, @channel.id) do |f|
+= form_for(@channel, url: @channel.new_record? ? channels_path : channel_path(login_user.username, @channel.id), html: {class: 'form-horizontal'}) do |f|
   - if @channel.errors.any?
     #error_explanation
       h2= t("mongoid.errors.models.channel.title", count: @channel.errors.count)
@@ -6,39 +6,48 @@
         - @channel.errors.full_messages.each do |msg|
           li= msg
 
-  = f.label t('.title') do
-    span= t('.title')
-    = f.text_field(:title)
+  .control-group
+    label.control-label= t('.title')
+    .controls
+      = f.text_field(:title)
 
-  = f.label t('.description') do
-    span= t('.description')
-    = f.text_field(:description)
+  .control-group
+    label.control-label= t('.description')
+    .controls
+      = f.text_area(:description)
 
   / 新規作成の場合
   - if @channel.new_record?
-    = f.label t('.type') do
-      span= t('.type')
-      = f.radio_button(:_type, 'ustream_channel', checked: true)
-      = f.radio_button(:_type, 'radiko_channel')
+    .control-group
+      label.control-label= t('.type')
+      .controls
+        = f.radio_button(:_type, 'ustream_channel', checked: true)
+        = f.radio_button(:_type, 'radiko_channel')
 
-    = label_tag t('.ust_uid'), id: 'label-channel-ust-uid' do
-      span= t('.ust_uid')
-      = text_field_tag('channel[ust_uid]')
+    .control-group#control-group-ust-uid
+      label.control-label= t('.ust_uid')
+      .controls
+        = text_field_tag('channel[ust_uid]')
 
-    = label_tag t('.station_id'), id: 'label-channel-station-id' do
-      span= t('.station_id')
-      = select_tag('channel[station_id]', options_for_select(Station.all.map{|s| [s.name, s.id.to_s]}))
+    .control-group#control-group-station-id
+      label.control-label= t('.station_id')
+      .controls
+        = select_tag('channel[station_id]', options_for_select(Station.all.map{|s| [s.name, s.id.to_s]}))
 
   / Ustreamの場合
   - if @channel._type == UstreamChannel.to_s
-    = f.label t('.ust_uid') do
-      span= t('.ust_uid')
-      = f.text_field(:ust_uid)
+    .control-group
+      label.control-label= t('.ust_uid')
+      .controls
+        = f.text_field(:ust_uid)
 
   / Radikoの場合
   - if @channel._type == RadikoChannel.to_s
-    = f.label t('.station_id') do
-      span= t('.station_id')
-      = f.select(:station_id, Station.all.map{|s| [s.name, s.id]}, 'selected' => @channel.station_id)
+    .control-group
+      label.control-label= t('.station_id')
+      .controls
+        = f.select(:station_id, Station.all.map{|s| [s.name, s.id]}, 'selected' => @channel.station_id)
 
-  = f.submit
+  .control-group
+    .controls
+      = f.submit(@channel.new_record? ? t('.create') : t('.update'), class: 'btn')

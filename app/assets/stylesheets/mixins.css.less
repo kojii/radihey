@@ -74,49 +74,9 @@
   right: 0px;
 }
 
-.tooltip(@baloon_top: -3.4em, @carret_top: -1.0em) {
-
-  cursor: pointer;
-  &:hover {
-    position: relative;
-
-    &:before {
-      text-decoration: none;
-       cursor: default;
-       content: attr(data-tooltip);
-       position: absolute;
-       top: @baloon_top;
-       left: 0;
-       display: block;
-       padding: 5px 10px;
-       border-radius: 5px;
-       -moz-border-radius: 5px;
-       background: rgba(0,0,0,0.8);
-       color: white;
-       white-space: nowrap;
-       font-size: 12px;
-       z-index: @tooltip;
-    }
-
-    &:after {
-      cursor: default;
-      display: block;
-      position: absolute;
-      top: @carret_top;
-      left: 50%;
-      margin-left: -0.4em;
-      border-right-width: 0.4em;
-      border-left-width: 0.4em;
-      border-top-width: 0.4em;
-      border-bottom-width: 0px;
-      border-style: solid;
-      border-color: rgba(0,0,0,0.8) transparent;
-      width: 0px;
-      height: 0px;
-      content: "";
-      z-index: @tooltip;
-    }
-
-  }
+.radihey-well() {
+  padding: 9px 0;
+  background-color: rgba(0,0,0,0.05);
+  .shadowed-box(0 1px 3px rgba(0, 0, 0, 0.3) inset);
+  border: none;
 }
-

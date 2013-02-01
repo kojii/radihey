@@ -6,6 +6,7 @@ RadiheyRails::Application.routes.draw do
   match 'join', to: 'users#new', :as => :join
   match 'login', to: 'user_sessions#new', :as => :login
   match 'logout', to: 'user_sessions#destroy', :as => :logout
+  match 'account_settings', to: 'users#edit', :as => :account_settings
 
   resources :user_sessions
 

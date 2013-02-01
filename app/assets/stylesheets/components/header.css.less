@@ -1,10 +1,39 @@
+@import "variables.css.less";
 @import "mixins.css.less";
 .navbar {
   .navbar-inner {
-    .gradient(rgb(65,33,18),rgb(36,20,11));
+    .gradient(@header_gradient_start_color, @header_gradient_end_color);
+  }
+  .divider-vertical {
+    border-left-color: @header_gradient_end_color;
+    border-right-color: @header_gradient_start_color;
   }
   .brand {
     padding-top: 0;
     padding-bottom: 0;
+  }
+  .nav {
+    li {
+      &.dropdown {
+        &.open {
+          .dropdown-toggle {
+            .gradient(@header_gradient_end_color, @header_gradient_start_color);
+            color: @font_color_in_negative_bg;
+          }
+        }
+      }
+      .dropdown-menu {
+        a {
+          color: @font_color_base;
+        }
+      }
+      a {
+        text-shadow: none;
+        color: #ddd;
+        &:hover {
+          color: @font_color_in_negative_bg;
+        }
+      }
+    }
   }
 }

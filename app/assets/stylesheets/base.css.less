@@ -1,8 +1,21 @@
+@import 'variables.css.less';
 body {
   padding-top: 60px;
   padding-bottom: 40px;
   background-image: url('bg.png');
-  a {
-    color: rgb(0,100,130);
+}
+a {
+  color: @font_color_link;
+}
+form {
+  input[type='text'],
+  input[type='password'],
+  input[type='email'],
+  textarea {
+    width: 90%;
+  }
+  textarea {
+    height: 100px;
+    resize: vertical;
   }
 }

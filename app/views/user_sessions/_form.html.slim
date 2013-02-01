@@ -1,4 +1,4 @@
-= form_for @user_session do |f|
+= form_for @user_session, html: {class: 'form-horizontal'} do |f|
   - if @user_session.errors.any?
     #error_explanation
       h2= t("mongoid.errors.models.user_session.title", count: @user_session.errors.count)
@@ -6,12 +6,18 @@
         - @user_session.errors.full_messages.each do |msg|
           li= msg
 
+  .control-group
   = f.label t('.email') do
-    span= t('.email')
-    = f.text_field(:email)
+    label.control-label= t('.email')
+    .controls
+      = f.email_field(:email)
 
+  .control-group
   = f.label t('.password') do
-    span= t('.password')
-    = f.password_field(:password)
+    label.control-label= t('.password')
+    .controls
+      = f.password_field(:password)
 
-  = f.submit
+  .control-group
+    .controls
+      = f.submit(value: t('.login'), class: 'btn')

@@ -37,11 +37,10 @@ class UsersController < ApplicationController
 
   def update
     return render_404 unless login_user
-    @user = login_user
-    @user.update_attribute(params[:user])
-    if @user.save
-      redirect_to show_user_path
+    if login_user.update_attributes(params[:user])
+      redirect_to home_path(login_user.username)
     else
+      @user = login_user
       flash.now[:notice] = I18n.t("controllers.users.create.invalid_parameter")
       render :edit
     end

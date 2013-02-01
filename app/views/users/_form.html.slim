@@ -1,4 +1,4 @@
-= form_for @user do |f|
+= form_for(@user, html: {class: 'form-horizontal'}) do |f|
   - if @user.errors.any?
     #error_explanation
       h2= t("mongoid.errors.models.user.title", count: @user.errors.count)
@@ -6,20 +6,30 @@
         - @user.errors.full_messages.each do |msg|
           li= msg
 
+  .control-group
   = f.label t('.email') do
-    span= t('.email')
-    = f.text_field(:email)
+    label.control-label= t('.email')
+    .controls
+      = f.email_field(:email)
 
-  = f.label t('.username') do
-    span= t('.username')
-    = f.text_field(:username)
+  .control-group
+  = f.label (@user.new_record? ? t('.new_username') : t('.username')) do
+    label.control-label= t('.username')
+    .controls
+      = f.text_field(:username)
 
+  .control-group
   = f.label t('.password') do
-    span= t('.password')
-    = f.password_field(:password)
+    label.control-label= t('.password')
+    .controls
+      = f.password_field(:password, placeholder: t('.not_shown'))
 
+  .control-group
   = f.label t('.password_confirmation') do
-    span= t('.password_confirmation')
-    = f.password_field(:password_confirmation)
+    label.control-label= t('.password_confirmation')
+    .controls
+      = f.password_field(:password_confirmation, placeholder: t('.not_shown'))
 
-  = f.submit
+  .control-group
+    .controls
+      = f.submit(value: @user.new_record? ? t('.create') : t('.update'), class: 'btn')
