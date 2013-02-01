@@ -30,6 +30,7 @@
       .controls
         = f.select(:station_id, Station.all.map{|s| [s.name, s.id]}, 'selected' => @channel.station_id)
 
+  = f.hidden_field(:_type)
   .control-group
     .controls
       = f.submit(@channel.new_record? ? t('.create') : t('.update'), class: 'btn')

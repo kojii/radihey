@@ -99,6 +99,8 @@ ja:
             password_confirmation:
               too_short: '確認用のパスワードが短かすぎます。'
 
+  custom_validation:
+    invalid_ust_uid: 'が正しくありません。'
   models:
     user:
       you_can_use: "には、半角英数字または _（アンダーバー）または .（ドット）を使用してください。"

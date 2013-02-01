@@ -22,9 +22,11 @@ class ChannelsController < ApplicationController
   def create
     params_ch =  params['ustream_channel'] || params['radiko_channel']
     case params_ch[:_type]
-    when "ustream_channel"
+    when UstreamChannel.to_s
       @channel = UstreamChannel.new(params_ch)
-    when "radiko_channel"
+      if @channel.embed_tag == ''
+      end
+    when RadikoChannel.to_s
       @channel = RadikoChannel.new(params_ch)
     else
       return render_404
@@ -42,9 +44,9 @@ class ChannelsController < ApplicationController
   end
 
   def update
-    channel = Channel.where(_id: params[:id]).first
-    if channel.update_attributes(params[channel._type.underscore])
-      redirect_to channel_path(login_user.username, channel.id)
+    @channel = Channel.where(_id: params[:id]).first
+    if @channel.update_attributes(params[@channel._type.underscore])
+      redirect_to channel_path(login_user.username, @channel.id)
     else
       render :edit
     end

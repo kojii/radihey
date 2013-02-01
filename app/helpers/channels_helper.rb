@@ -1,5 +1,5 @@
 module ChannelsHelper
-  def my_page?
+  def owner?
      logged_in? and current_user == login_user
   end
 end

@@ -14,8 +14,8 @@
         = image_tag('he-button.png', class: 'button')
         = image_tag('he-button.png', class: 'button')
 
-  - if my_page?
+  - if owner?
     p
       = link_to 'Edit Channel', edit_channel_path(login_user.username, @channel.id)
       span.separator
-      = link_to 'Delete Channel', channel_path(login_user.username), confirm: 'OK?', :method => :delete
+      = link_to 'Delete Channel', channel_path(login_user.username, @channel.id), confirm: 'OK?', :method => :delete
