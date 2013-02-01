@@ -32,6 +32,8 @@ ja:
       not_shown: '非表示になっています'
 
   channels:
+    index:
+      title: '%{name}さんのチャンネル'
     new:
       title: 'チャンネルの作成'
     edit:
