@@ -1,4 +1,5 @@
 .well.sidebar-nav
   ul.nav.nav-list
     li.nav-header.channel-list= t('.channels')
-    li title
+    - Channel.all.each do |ch|
+      li= link_to ch.title, channel_path(ch.owner.username, ch.id)
