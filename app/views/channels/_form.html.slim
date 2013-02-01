@@ -16,24 +16,6 @@
     .controls
       = f.text_area(:description)
 
-  / 新規作成の場合
-  - if @channel.new_record?
-    .control-group
-      label.control-label= t('.type')
-      .controls
-        = f.radio_button(:_type, 'ustream_channel', checked: true)
-        = f.radio_button(:_type, 'radiko_channel')
-
-    .control-group#control-group-ust-uid
-      label.control-label= t('.ust_uid')
-      .controls
-        = text_field_tag('channel[ust_uid]')
-
-    .control-group#control-group-station-id
-      label.control-label= t('.station_id')
-      .controls
-        = select_tag('channel[station_id]', options_for_select(Station.all.map{|s| [s.name, s.id.to_s]}))
-
   / Ustreamの場合
   - if @channel._type == UstreamChannel.to_s
     .control-group

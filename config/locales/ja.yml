@@ -70,6 +70,20 @@ ja:
         station_id: 'ラジオ放送局'
     errors:
       models:
+        ustream_channel:
+          attributes:
+            title:
+              blank: 'は必須項目です。'
+            description:
+              blank: 'は必須項目です。'
+            ust_uid:
+              blank: 'は必須項目です。'
+        radiko_channel:
+          attributes:
+            title:
+              blank: 'は必須項目です。'
+            description:
+              blank: 'は必須項目です。'
         user:
           attributes:
             email:

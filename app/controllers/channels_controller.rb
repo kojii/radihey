@@ -5,19 +5,27 @@ class ChannelsController < ApplicationController
   end
 
   def show
-    render_404 unless  @channel = Channel.where(_id: params[:id]).first
+    render_404 unless @channel = Channel.where(_id: params[:id]).first
   end
 
   def new
-    @channel = Channel.new
+    case params[:type]
+    when 'ustream'
+      @channel = UstreamChannel.new
+    when 'radiko'
+      @channel = RadikoChannel.new
+    else
+      render_404
+    end
   end
 
   def create
-    case params[:channel][:_type]
+    params_ch =  params['ustream_channel'] || params['radiko_channel']
+    case params_ch[:_type]
     when "ustream_channel"
-      @channel = UstreamChannel.new(params[:channel])
+      @channel = UstreamChannel.new(params_ch)
     when "radiko_channel"
-      @channel = RadikoChannel.new(params[:channel])
+      @channel = RadikoChannel.new(params_ch)
     else
       return render_404
     end
@@ -34,10 +42,9 @@ class ChannelsController < ApplicationController
   end
 
   def update
-    @channel = Channel.where(_id: params[:id]).first
-    type = @channel._type.underscore
-    if @channel.update_attributes(params[type])
-      redirect_to channels_path(login_user.username)
+    channel = Channel.where(_id: params[:id]).first
+    if channel.update_attributes(params[channel._type.underscore])
+      redirect_to channel_path(login_user.username, channel.id)
     else
       render :edit
     end

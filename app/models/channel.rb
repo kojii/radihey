@@ -5,5 +5,5 @@ class Channel
   field :description, type: String;
   belongs_to :owner, class_name: User.to_s, :inverse_of => :channels
 
-  validate :title, :description, presence: true
+  validates :title, :description, presence: true
 end
