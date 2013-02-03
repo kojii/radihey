@@ -53,6 +53,10 @@ class User
     Notifier.send_activation_instructions(self.id, @callback_url).deliver
   end
 
+  def owner_of?(channel)
+    self.channel_ids.include?(channel.id)
+  end
+
   class << self
     def find_by_symbol(symbol)
       any_of({ email: symbol }, { username: symbol }).first

@@ -15,7 +15,9 @@ RadiheyRails::Application.routes.draw do
   end
 
   scope ":username" do
-    resources :channels
+    resources :channels do
+      resources :buttons
+    end
   end
 
   match '/:username', to: 'channels#index', :as => :home
