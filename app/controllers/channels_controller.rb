@@ -43,7 +43,7 @@ class ChannelsController < ApplicationController
 
   def update
     @channel = Channel.where(_id: params[:id]).first
-    if @channel.update_attributes(params[@channel._type.underscore])
+    if @channel.update_attributes(params[@channel.class.to_s.underscore])
       redirect_to channel_path(login_user.username, @channel.id)
     else
       render :edit

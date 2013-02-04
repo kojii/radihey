@@ -1,0 +1,2 @@
+class DefaultButton < Button
+end

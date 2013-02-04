@@ -17,18 +17,31 @@
       = f.text_area(:description)
 
   / Ustreamの場合
-  - if @channel._type == UstreamChannel.to_s
+  - if @channel.is_a? UstreamChannel
     .control-group
       label.control-label= t('.ust_uid')
       .controls
         = f.text_field(:ust_uid)
 
   / Radikoの場合
-  - if @channel._type == RadikoChannel.to_s
+  - if @channel.is_a? RadikoChannel
     .control-group
       label.control-label= t('.station_id')
       .controls
         = f.select(:station_id, Station.all.map{|s| [s.name, s.id]}, 'selected' => @channel.station_id)
+
+  .control-group
+    label.control-label= t('.buttons')
+    .controls
+      ul
+        - Button.where(_type: 'DefaultButton').each do |button|
+          li.chk_button
+            = f.check_box :button_ids, {checked: @channel.buttons.include?(button), name: "#{@channel.class.to_s.underscore}[button_ids][]"}, button.id
+            = button.name
+        - login_user.buttons.each do |button|
+          li.chk_button
+            = f.check_box :button_ids, {checked: @channel.buttons.include?(button), name: "#{@channel.class.to_s.underscore}[button_ids][]"}, button.id
+            = button.name
 
   = f.hidden_field(:_type)
   .control-group

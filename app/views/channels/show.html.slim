@@ -7,12 +7,8 @@
       #video
         p= @channel.embed_tag.html_safe
       #buttons
-        = image_tag('he-button.png', class: 'button')
-        = image_tag('he-button.png', class: 'button')
-        = image_tag('he-button.png', class: 'button')
-        = image_tag('he-button.png', class: 'button')
-        = image_tag('he-button.png', class: 'button')
-        = image_tag('he-button.png', class: 'button')
+        - @channel.buttons.each do |button|
+          = image_tag(button.image.url, class: 'button')
 
   - if owner?
     p

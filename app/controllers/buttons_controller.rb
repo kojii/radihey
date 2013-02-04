@@ -8,11 +8,11 @@ class ButtonsController < ApplicationController
   end
 
   def new
-    @button = Button.new
+    @button = CustomButton.new
   end
 
   def create
-    @button = Button.new(params[:button])
+    @button = CustomButton.new(params[:button])
     @button.owner = login_user
     if @button.save
       redirect_to buttons_path(login_user.username)
