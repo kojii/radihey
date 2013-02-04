@@ -59,10 +59,12 @@ ja:
       title: 'チャンネルのタイトル'
       description: 'チャンネルの説明'
       type: 'チャンネルの種類'
-      ust_uid: 'UstreamのユーザID'
+      url: 'Ustream動画のURL'
       station_id: 'ラジオ放送局'
       create: 'チャンネルを作成する'
       update: '保存する'
+      ac_ust: '以下の情報を自動入力する'
+      invalid_url: '正しいUstreamの動画URLを入れてください。'
   mailers:
     notifier:
       default_from: 'miyake@growmonth.ly'
@@ -129,7 +131,7 @@ ja:
               blank: 'は必須項目です。'
 
   custom_validation:
-    invalid_ust_uid: 'が正しくありません。'
+    invalid_url: 'には正しい Ustream のURLを入力してください。'
   models:
     user:
       you_can_use: "には、半角英数字または _（アンダーバー）または .（ドット）を使用してください。"

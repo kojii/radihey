@@ -1,6 +1,14 @@
 @import 'variables.css.less';
 @import 'mixins.css.less';
 form {
+  .invalid_url {
+    visibility: hidden;
+    text-align: right;
+    color: @font_color_error;
+    &.show {
+      visibility: visible;
+    }
+  }
   ul {
     .clearfix();
     list-style: none;

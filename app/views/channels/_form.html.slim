@@ -6,6 +6,23 @@
         - @channel.errors.full_messages.each do |msg|
           li= msg
 
+
+  p.invalid_url= t('.invalid_url')
+  / Ustreamの場合
+  - if @channel.is_a? UstreamChannel
+    .control-group
+      label.control-label= t('.url')
+      .controls
+        = f.text_field(:url)
+        span.btn.ac_ust_submit= t('.ac_ust')
+
+  / Radikoの場合
+  - if @channel.is_a? RadikoChannel
+    .control-group
+      label.control-label= t('.station_id')
+      .controls
+        = f.select(:station_id, Station.all.map{|s| [s.name, s.id]}, 'selected' => @channel.station_id)
+
   .control-group
     label.control-label= t('.title')
     .controls
@@ -15,20 +32,6 @@
     label.control-label= t('.description')
     .controls
       = f.text_area(:description)
-
-  / Ustreamの場合
-  - if @channel.is_a? UstreamChannel
-    .control-group
-      label.control-label= t('.ust_uid')
-      .controls
-        = f.text_field(:ust_uid)
-
-  / Radikoの場合
-  - if @channel.is_a? RadikoChannel
-    .control-group
-      label.control-label= t('.station_id')
-      .controls
-        = f.select(:station_id, Station.all.map{|s| [s.name, s.id]}, 'selected' => @channel.station_id)
 
   .control-group
     label.control-label= t('.buttons')
