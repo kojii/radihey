@@ -8,6 +8,23 @@ ja:
       logout: 'ログアウト'
       account_settings: 'アカウント設定'
 
+  buttons:
+    form:
+      create: '作成する'
+      update: '保存する'
+      name: 'ボタンの名前'
+      se: '効果音'
+      image: 'ボタンの画像'
+      uploaded_file: 'アップロード済みファイル'
+    new:
+      title: '新規ボタン作成'
+    edit:
+      title: 'ボタンの編集'
+    show:
+      index: 'ボタンの一覧'
+      edit: 'ボタンの編集'
+      destroy: 'ボタンの削除'
+
   user_sessions:
     new:
       title: 'ログイン'
@@ -68,6 +85,10 @@ ja:
         type: 'チャンネルの種類'
         ust_uid: 'UstreamのユーザID'
         station_id: 'ラジオ放送局'
+      button:
+        name: 'ボタンの名前'
+        se: '効果音'
+        image: 'ボタンの画像'
     errors:
       models:
         ustream_channel:
@@ -98,6 +119,14 @@ ja:
               confirmation: '確認用のパスワードが一致していません。'
             password_confirmation:
               too_short: '確認用のパスワードが短かすぎます。'
+        button:
+          attributes:
+            name:
+              blank: 'は必須項目です。'
+            se:
+              blank: 'は必須項目です。'
+            image:
+              blank: 'は必須項目です。'
 
   custom_validation:
     invalid_ust_uid: 'が正しくありません。'

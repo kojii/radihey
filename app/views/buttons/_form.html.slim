@@ -1,0 +1,35 @@
+= form_for(@button, html: {class: 'form-horizontal'}) do |f|
+  - if @button.errors.any?
+    #error_explanation
+      h2= t("mongoid.errors.models.button.title", count: @button.errors.count)
+      ul
+        - @button.errors.full_messages.each do |msg|
+          li= msg
+
+  .control-group
+  = f.label t('.name') do
+    label.control-label= t('.name')
+    .controls
+      = f.text_field(:name)
+
+  .control-group
+  = f.label t('.se') do
+    label.control-label= t('.se')
+    .controls
+      = f.file_field(:se)
+      - if @button.se.exists?
+        p= t('.uploaded_file')
+        p= link_to @button.se.url, @button.se.url, target: '_blank'
+
+  .control-group
+  = f.label t('.image') do
+    label.control-label= t('.image')
+    .controls
+      = f.file_field(:image)
+      - if @button.image.exists?
+        p= t('.uploaded_file')
+        p= link_to @button.image.url, @button.image.url, target: '_blank'
+
+  .control-group
+    .controls
+      = f.submit(value: @button.new_record? ? t('.create') : t('.update'), class: 'btn')

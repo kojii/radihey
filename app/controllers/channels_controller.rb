@@ -24,8 +24,6 @@ class ChannelsController < ApplicationController
     case params_ch[:_type]
     when UstreamChannel.to_s
       @channel = UstreamChannel.new(params_ch)
-      if @channel.embed_tag == ''
-      end
     when RadikoChannel.to_s
       @channel = RadikoChannel.new(params_ch)
     else

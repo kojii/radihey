@@ -14,9 +14,11 @@ RadiheyRails::Application.routes.draw do
     get :pre_registered
   end
 
+  resources :buttons
+
   scope ":username" do
     resources :channels do
-      resources :buttons
+      resources :custom_buttons
     end
   end
 
