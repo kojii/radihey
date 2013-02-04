@@ -1,10 +1,10 @@
 class ButtonsController < ApplicationController
   def index
-    @buttons = Button.all
+    @buttons = login_user.buttons
   end
 
   def show
-    @button = Button.find(params[:id])
+    @button = login_user.buttons.find(params[:id])
   end
 
   def new
@@ -13,29 +13,30 @@ class ButtonsController < ApplicationController
 
   def create
     @button = Button.new(params[:button])
+    @button.owner = login_user
     if @button.save
-      redirect_to buttons_path
+      redirect_to buttons_path(login_user.username)
     else
       render :new
     end
   end
 
   def edit
-    @button = Button.find(params[:id])
+    @button = login_user.buttons.find(params[:id])
   end
 
   def update
-    @button = Button.find(params[:id])
+    @button = login_user.buttons.find(params[:id])
     if @button.update_attributes(params[:button])
-      redirect_to button_path(@button.id)
+      redirect_to button_path(login_user.username, @button.id)
     else
       render :edit
     end
   end
 
   def destroy
-    @button = Button.find(params[:id])
+    @button = login_user.buttons.find(params[:id])
     @button.destroy
-    redirect_to buttons_path
+    redirect_to buttons_path(login_user.username)
   end
 end

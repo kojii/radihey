@@ -24,6 +24,7 @@ class User
   end
 
   has_many :channels, :inverse_of => :owner, :dependent => :destroy
+  has_many :buttons, :inverse_of => :owner
 
   @@reserved_words = %w(active_admin admin official info support login logout join agreement commerce individual leave disconnect owners auth users settings uploaded_images payments profiles apply activation tags tutorial).join("|")
   validates :email, :username, :presence => true

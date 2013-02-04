@@ -2,4 +2,4 @@ h1 Index of Buttons
 ul
   - @buttons.each do |button|
     li= image_tag button.image.url
-    li= link_to button.name, button_path(button.id)
+    li= link_to button.name, button_path(login_user.username, button.id)

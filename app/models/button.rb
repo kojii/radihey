@@ -3,7 +3,7 @@ class Button
   include Mongoid::Timestamps
   include Mongoid::Paperclip
 
-  has_and_belongs_to_many :channels
+  belongs_to :owner, class_name: User.to_s, :inverse_of => :buttons
 
   field :name, type: String
   has_mongoid_attached_file :se, {
