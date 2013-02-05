@@ -1,4 +1,6 @@
-= form_for(@button, html: {class: 'form-horizontal'}) do |f|
+= form_for(@button,
+  url: @button.new_record? ? buttons_path(login_user.username) : button_path(login_user.username, @button.id),
+  html: {class: 'form-horizontal'}) do |f|
   - if @button.errors.any?
     #error_explanation
       h2= t("mongoid.errors.models.button.title", count: @button.errors.count)
@@ -13,23 +15,27 @@
       = f.text_field(:name)
 
   .control-group
-  = f.label t('.se') do
-    label.control-label= t('.se')
+  = f.label t('.button_se') do
+    label.control-label= t('.button_se')
     .controls
-      = f.file_field(:se)
-      - if @button.se.exists?
-        p= t('.uploaded_file')
-        p= link_to @button.se.url, @button.se.url, target: '_blank'
+      = f.select(:button_se_id, ButtonSe.all.map{|s| [s.name, s.id]}, 'selected' => @button.button_se_id)
 
   .control-group
-  = f.label t('.image') do
-    label.control-label= t('.image')
+  = f.label t('.button_label') do
+    label.control-label= t('.button_label')
     .controls
-      = f.file_field(:image)
-      - if @button.image.exists?
-        p= t('.uploaded_file')
-        p= link_to @button.image.url, @button.image.url, target: '_blank'
+      = f.text_field(:button_label)
+
+  .control-group
+  = f.label t('.button_image') do
+    label.control-label= t('.button_image')
+    .controls
+      - ButtonImage.all.each do |bi|
+        .wrap
+          = f.radio_button :button_image_id, bi.id
+          = image_tag(bi.filename)
 
   .control-group
     .controls
+      = link_to t('.cancel'), buttons_path(login_user.username), class: 'btn cancel-btn'
       = f.submit(value: @button.new_record? ? t('.create') : t('.update'), class: 'btn')

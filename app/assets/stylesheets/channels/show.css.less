@@ -1,8 +1,26 @@
-.main {
+@import 'variables.css.less';
+@import 'mixins.css.less';
+.main.show-channel {
   #buttons {
     .button {
       width: 31%;
       margin: 0 2% 10px 0;
+    }
+  }
+  #owner-actions {
+    max-width: 480px;
+    padding-top: 10px;
+    border-top: 1px solid @border_color;
+    p {
+      margin: 0;
+    }
+    .actions {
+      .clearfix();
+      list-style: none;
+      li {
+        float: left;
+        margin-right: 10px;
+      }
     }
   }
 }

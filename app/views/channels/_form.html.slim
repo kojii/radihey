@@ -49,4 +49,5 @@
   = f.hidden_field(:_type)
   .control-group
     .controls
+      = link_to t('.cancel'), channel_path(login_user.username, @channel.id), class: 'btn cancel-btn'
       = f.submit(@channel.new_record? ? t('.create') : t('.update'), class: 'btn')

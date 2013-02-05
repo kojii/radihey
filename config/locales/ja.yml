@@ -13,9 +13,11 @@ ja:
       create: '作成する'
       update: '保存する'
       name: 'ボタンの名前'
-      se: '効果音'
-      image: 'ボタンの画像'
+      button_se: '効果音'
+      button_image: 'ボタンの画像'
+      button_label: 'ボタンに載せる文字'
       uploaded_file: 'アップロード済みファイル'
+      cancel: 'キャンセル'
     new:
       title: '新規ボタン作成'
     edit:
@@ -51,6 +53,10 @@ ja:
   channels:
     index:
       title: '%{name}さんのチャンネル'
+    show:
+      owner_actions: 'オーナー専用操作'
+      edit_channel: 'チャンネルの編集'
+      delete_channel: 'チャンネルの削除'
     new:
       title: 'チャンネルの作成'
     edit:
@@ -59,12 +65,14 @@ ja:
       title: 'チャンネルのタイトル'
       description: 'チャンネルの説明'
       type: 'チャンネルの種類'
-      url: 'Ustream動画のURL'
+      url: 'Ustream動画のURL http://www.ustream.tv/channel/チャンネル名'
       station_id: 'ラジオ放送局'
       create: 'チャンネルを作成する'
       update: '保存する'
       ac_ust: '以下の情報を自動入力する'
       invalid_url: '正しいUstreamの動画URLを入れてください。'
+      buttons: '使うボタン'
+      cancel: 'キャンセル'
   mailers:
     notifier:
       default_from: 'miyake@growmonth.ly'

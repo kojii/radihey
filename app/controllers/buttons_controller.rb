@@ -12,7 +12,7 @@ class ButtonsController < ApplicationController
   end
 
   def create
-    @button = CustomButton.new(params[:button])
+    @button = CustomButton.new(params[:custom_button])
     @button.owner = login_user
     if @button.save
       redirect_to buttons_path(login_user.username)
@@ -27,7 +27,7 @@ class ButtonsController < ApplicationController
 
   def update
     @button = login_user.buttons.find(params[:id])
-    if @button.update_attributes(params[:button])
+    if @button.update_attributes(params[:custom_button])
       redirect_to button_path(login_user.username, @button.id)
     else
       render :edit

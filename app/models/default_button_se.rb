@@ -1,0 +1,2 @@
+class DefaultButtonSe < ButtonSe
+end

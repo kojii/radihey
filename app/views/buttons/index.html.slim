@@ -1,5 +1,5 @@
-h1 Index of Buttons
+h1= "#{current_user.username}さんが作成したボタンの一覧"
 ul
   - @buttons.each do |button|
-    li= image_tag button.image.url
+    li= image_tag button.button_image.filename
     li= link_to button.name, button_path(login_user.username, button.id)

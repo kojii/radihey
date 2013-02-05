@@ -1,11 +1,13 @@
-h1 Show Buttons
+h1= @button.name
 dl
   dt name
   dd= @button.name
-  dt se_url
-  dd= @button.se.url
-  dt image_url
-  dd= image_tag @button.image.url
+  dt button_label
+  dd= @button.button_label
+  dt button_se
+  dd= @button.button_se.audio
+  dt button_image
+  dd= image_tag @button.button_image.filename
 
 = link_to t('.index'), buttons_path
 = link_to t('.edit'), edit_button_path(@button.id)

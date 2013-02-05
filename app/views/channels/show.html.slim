@@ -1,4 +1,4 @@
-.main
+.main.show-channel
   h1= @channel.title
   p= @channel.description
 
@@ -8,10 +8,12 @@
         p= @channel.embed_tag.html_safe
       #buttons
         - @channel.buttons.each do |button|
-          = image_tag(button.image.url, class: 'button')
+          = image_tag(button.button_image.filename, class: 'button')
 
   - if owner?
-    p
-      = link_to 'Edit Channel', edit_channel_path(login_user.username, @channel.id)
-      span.separator
-      = link_to 'Delete Channel', channel_path(login_user.username, @channel.id), confirm: 'OK?', :method => :delete
+    #owner-actions
+      p= t('.owner_actions')
+      ul.actions
+        li= link_to t('.edit_channel'), edit_channel_path(login_user.username, @channel.id)
+        li.separator |
+        li= link_to t('.delete_channel'), channel_path(login_user.username, @channel.id), confirm: 'OK?', :method => :delete
