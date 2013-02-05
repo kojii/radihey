@@ -8,7 +8,9 @@
         p= @channel.embed_tag.html_safe
       #buttons
         - @channel.buttons.each do |button|
-          = image_tag(button.button_image.filename, class: 'button')
+          .button_wrap
+            = image_tag(button.button_image.filename, class: 'button')
+            .button_label= button.button_label
 
   - if owner?
     #owner-actions

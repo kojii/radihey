@@ -2,9 +2,24 @@
 @import 'mixins.css.less';
 .main.show-channel {
   #buttons {
-    .button {
+    .button_wrap {
       width: 31%;
       margin: 0 2% 10px 0;
+      float: left;
+      position: relative;
+      .button_label {
+        position: absolute;
+        top: 0;
+        left: 0;
+        margin: 20px 0 0 16px;
+        font-size: 30px;
+        color: #fff;
+        font-weight: bold;
+      }
+    }
+    .button {
+      //width: 31%;
+      //margin: 0 2% 10px 0;
     }
   }
   #owner-actions {
