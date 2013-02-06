@@ -7,28 +7,28 @@
           li= msg
 
   .control-group
-  = f.label t('.email') do
-    label.control-label= t('.email')
-    .controls
-      = f.email_field(:email)
+    = f.label t('.email') do
+      label.control-label= t('.email')
+      .controls
+        = f.email_field(:email)
 
   .control-group
-  = f.label (@user.new_record? ? t('.new_username') : t('.username')) do
-    label.control-label= t('.username')
-    .controls
-      = f.text_field(:username)
+    = f.label (@user.new_record? ? t('.new_username') : t('.username')) do
+      label.control-label= t('.username')
+      .controls
+        = f.text_field(:username)
 
   .control-group
-  = f.label t('.password') do
-    label.control-label= t('.password')
-    .controls
-      = f.password_field(:password, placeholder: t('.not_shown'))
+    = f.label t('.password') do
+      label.control-label= t('.password')
+      .controls
+        = f.password_field(:password, placeholder: t('.not_shown'))
 
   .control-group
-  = f.label t('.password_confirmation') do
-    label.control-label= t('.password_confirmation')
-    .controls
-      = f.password_field(:password_confirmation, placeholder: t('.not_shown'))
+    = f.label t('.password_confirmation') do
+      label.control-label= t('.password_confirmation')
+      .controls
+        = f.password_field(:password_confirmation, placeholder: t('.not_shown'))
 
   .control-group
     .controls

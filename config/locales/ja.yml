@@ -16,6 +16,9 @@ ja:
   buttons:
     index:
       title: 'オリジナルボタンの管理'
+      new: '新しいボタンをつくる'
+      edit: '編集'
+      destroy: '削除'
     form:
       create: '作成する'
       update: '保存する'
@@ -28,8 +31,14 @@ ja:
       choose: '以下から選んでください。'
     new:
       title: '新規ボタン作成'
+      owner_actions: '操作'
+      back: '一覧に戻る'
     edit:
       title: 'ボタンの編集'
+      owner_actions: '操作'
+      back: '一覧に戻る'
+    update:
+      saved: '保存しました。'
     show:
       index: 'ボタンの一覧'
       edit: 'ボタンの編集'
@@ -48,13 +57,6 @@ ja:
       login: 'ログインする'
 
   users:
-    show:
-      title: 'アカウント設定'
-      username: 'ユーザ名'
-      email: 'メールアドレス'
-      password: 'パスワード'
-      not_shown: '非表示になっています。'
-      edit: '編集'
     update:
       title: 'アカウント設定'
       username: 'ユーザ名'
@@ -63,11 +65,11 @@ ja:
       not_shown: '非表示になっています。'
       owner_actions: '操作メニュー'
       edit: '設定しなおす'
-      updated: 'アカウント情報を更新しました。'
+      saved: 'アカウント情報を更新しました。'
     new:
       title: '新規ユーザ登録'
     edit:
-      title: 'アカウント設定'
+      title: 'アカウントの設定'
     form:
       email: 'メールアドレス'
       new_username: '希望するユーザ名'
@@ -81,6 +83,7 @@ ja:
   channels:
     index:
       title: 'チャンネルの管理'
+      new: '新しいチャンネルをつくる'
       edit: '編集'
       destroy: '削除'
     new:
@@ -140,6 +143,8 @@ ja:
             description:
               blank: 'は必須項目です。'
             ust_uid:
+              blank: 'は必須項目です。'
+            url:
               blank: 'は必須項目です。'
         radiko_channel:
           attributes:

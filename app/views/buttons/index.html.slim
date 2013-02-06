@@ -1,3 +1,18 @@
 .main#index-buttons
   h1= t('.title', name: login_user.username)
-  = render partial: 'components/buttons', locals: {buttons: @buttons, __show_link__: true}
+
+  p
+    = link_to t('.new'), new_button_path, class: 'btn new-btn'
+
+  .buttons
+    - @buttons.each do |button|
+      .button_row
+        .button_wrap
+          = image_tag(button.button_image.filename)
+          a.button_label= button.button_label
+        .description
+          p= button.name
+          ul.actions
+            li= link_to t('.edit'), edit_button_path(button.id)
+            li.separator |
+            li= link_to t('.destroy'), button_path(button.id), :method => :delete, :confirm => 'OK?'

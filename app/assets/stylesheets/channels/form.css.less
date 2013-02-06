@@ -1,23 +1,26 @@
 @import 'variables.css.less';
 @import 'mixins.css.less';
-form {
-  .invalid_url {
-    display: none;
-    text-align: right;
-    color: @font_color_error;
-    &.show {
-      display: block;
+.main#new_channel,
+.main#edit_channel {
+  form.channel_form {
+    .invalid_url {
+      display: none;
+      text-align: right;
+      color: @font_color_error;
+      &.show {
+        display: block;
+      }
     }
-  }
-  ul {
-    .clearfix();
-    list-style: none;
-    margin: 0;
-    li {
-      float: left;
-      margin-right: 10px;
-      input[type='checkbox'] {
-        margin: 0;
+    ul.check_buttons {
+      .clearfix();
+      list-style: none;
+      margin: 0;
+      li {
+        float: left;
+        margin-right: 10px;
+        input[type='checkbox'] {
+          margin: 0;
+        }
       }
     }
   }

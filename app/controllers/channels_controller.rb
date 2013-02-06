@@ -3,7 +3,7 @@ class ChannelsController < ApplicationController
   layout 'layouts/settings', except: [:broadcast]
 
   def index
-    @channel = Channel.all
+    @channels = login_user.channels.desc(:updated_at)
   end
 
   def broadcast
@@ -33,7 +33,7 @@ class ChannelsController < ApplicationController
     end
     @channel.owner = login_user
     if @channel.save
-      redirect_to channels_path(login_user.username)
+      redirect_to channels_path
     else
       render :new
     end
@@ -58,6 +58,6 @@ class ChannelsController < ApplicationController
   def destroy
     return render_400 unless @channel = Channel.where(_id: params[:id]).first
     @channel.destroy
-    redirect_to channels_path(login_user.username)
+    redirect_to channels_path
   end
 end

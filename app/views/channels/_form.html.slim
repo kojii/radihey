@@ -1,4 +1,4 @@
-= form_for(@channel, url: @channel.new_record? ? channels_path : channel_path(@channel.id), html: {class: 'form-horizontal'}) do |f|
+= form_for(@channel, url: @channel.new_record? ? channels_path : channel_path(@channel.id), html: {class: 'form-horizontal channel_form'}) do |f|
   - if @channel.errors.any?
     #error_explanation
       h2= t("mongoid.errors.models.channel.title", count: @channel.errors.count)
@@ -36,13 +36,13 @@
   .control-group
     label.control-label= t('.buttons')
     .controls
-      ul
+      ul.check_buttons
         - Button.where(_type: 'DefaultButton').each do |button|
-          li.chk_button
+          li
             = f.check_box :button_ids, {checked: @channel.buttons.include?(button), name: "#{@channel.class.to_s.underscore}[button_ids][]"}, button.id
             = button.name
         - login_user.buttons.each do |button|
-          li.chk_button
+          li
             = f.check_box :button_ids, {checked: @channel.buttons.include?(button), name: "#{@channel.class.to_s.underscore}[button_ids][]"}, button.id
             = button.name
 

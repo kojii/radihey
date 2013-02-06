@@ -9,28 +9,28 @@
           li= msg
 
   .control-group
-  = f.label t('.name') do
-    label.control-label= t('.name')
-    .controls
-      = f.text_field(:name)
+    = f.label t('.name') do
+      label.control-label= t('.name')
+      .controls
+        = f.text_field(:name)
 
   .control-group
-  = f.label t('.button_se') do
-    label.control-label= t('.button_se')
-    .controls
-      = f.select(:button_se_id, ButtonSe.all.map{|s| [s.name, s.id]}, 'selected' => @button.button_se_id)
+    = f.label t('.button_se') do
+      label.control-label= t('.button_se')
+      .controls
+        = f.select(:button_se_id, ButtonSe.all.map{|s| [s.name, s.id]}, 'selected' => @button.button_se_id)
 
   .control-group
-  = f.label t('.button_label') do
-    label.control-label= t('.button_label')
-    .controls
-      = f.text_field(:button_label)
+    = f.label t('.button_label') do
+      label.control-label= t('.button_label')
+      .controls
+        = f.text_field(:button_label)
 
   .control-group
-  = f.label t('.button_image') do
-    label.control-label= t('.button_image')
-    .controls
-      p.choose= t('.choose')
+    = f.label t('.button_image') do
+      label.control-label= t('.button_image')
+      .controls
+        p.choose= t('.choose')
 
   .buttons-container
     - @button_images.each do |bi|
@@ -43,5 +43,4 @@
 
   .control-group
     .controls
-      = link_to t('.cancel'), buttons_path, class: 'btn cancel-btn'
       = f.submit(value: @button.new_record? ? t('.create') : t('.update'), class: 'btn')

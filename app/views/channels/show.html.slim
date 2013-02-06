@@ -1,4 +1,4 @@
-.main.show-channel
+.main#show_channel
   h1= "#{t('.preview')}#{@channel.title}"
   p= @channel.description
 
@@ -9,7 +9,7 @@
       .buttons
         = render partial: 'components/buttons', locals: {buttons: @channel.buttons}
 
-  #owner-actions
+  #owner_actions
     p= t('.owner_actions')
     ul.actions
       li= link_to t('.index'), channels_path

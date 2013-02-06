@@ -1,2 +1,7 @@
-h1= t('.title')
-= render 'form'
+.main#new_button
+  h1= t('.title')
+  = render 'form'
+  #owner_actions
+    p= t('.owner_actions')
+    ul.actions
+      li= link_to t('.back'), buttons_path
