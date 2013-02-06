@@ -2,4 +2,4 @@
   ul.nav.nav-list
     li.nav-header.channel-list= t('.channels')
     - Channel.all.each do |ch|
-      li= link_to ch.title, channel_path(ch.owner.username, ch.id)
+      li= link_to ch.title, broadcast_channel_path(ch.owner.username, ch.id)

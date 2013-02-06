@@ -4,9 +4,9 @@ ja:
       channels: 'チャンネル'
     setting_sidebar:
       setting_menu: '設定メニュー'
-      account_settings: 'アカウント設定'
-      buttons_settings: 'ボタン管理'
-      channels_settings: 'チャンネル管理'
+      account_settings: 'アカウントの設定'
+      buttons_settings: 'オリジナルボタンの管理'
+      channels_settings: 'チャンネルの管理'
     header:
       join: '新規登録'
       login: 'ログイン'
@@ -15,7 +15,7 @@ ja:
 
   buttons:
     index:
-      title: '%{name}さんのボタン一覧'
+      title: 'オリジナルボタンの管理'
     form:
       create: '作成する'
       update: '保存する'
@@ -80,13 +80,7 @@ ja:
 
   channels:
     index:
-      title: 'チャンネル管理'
-      edit: '編集'
-      destroy: '削除'
-    show:
-      preview: 'プレビュー - '
-      owner_actions: '操作メニュー'
-      index: 'チャンネル一覧'
+      title: 'チャンネルの管理'
       edit: '編集'
       destroy: '削除'
     new:

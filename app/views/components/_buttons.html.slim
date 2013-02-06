@@ -3,5 +3,6 @@
     .button_wrap
       = image_tag(button.button_image.filename)
       a.button_label= button.button_label
+      a.click_target
       - if defined? __show_link__
         div= link_to button.name, button_path(button.id)
