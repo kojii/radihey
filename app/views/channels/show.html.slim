@@ -1,5 +1,5 @@
 .main.show-channel
-  h1= @channel.title
+  h1= "#{t('.preview')}#{@channel.title}"
   p= @channel.description
 
   - if @channel._type == UstreamChannel.to_s
@@ -9,10 +9,12 @@
       .buttons
         = render partial: 'components/buttons', locals: {buttons: @channel.buttons}
 
-  - if owner?
-    #owner-actions
-      p= t('.owner_actions')
-      ul.actions
-        li= link_to t('.edit_channel'), edit_channel_path(login_user.username, @channel.id)
-        li.separator |
-        li= link_to t('.delete_channel'), channel_path(login_user.username, @channel.id), confirm: 'OK?', :method => :delete
+  #owner-actions
+    p= t('.owner_actions')
+    ul.actions
+      li= link_to t('.index'), channels_path
+      li.separator |
+      li= link_to t('.edit'), edit_channel_path(@channel.id)
+      li.separator |
+      li= link_to t('.destroy'), channel_path(@channel.id), method: 'delete', confirm: 'OK?'
+

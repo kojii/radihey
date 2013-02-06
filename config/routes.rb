@@ -18,12 +18,11 @@ RadiheyRails::Application.routes.draw do
   scope 'settings' do
     match 'account', to: 'users#edit', :as => :account_settings
     resources :buttons
-    #match 'buttons', to: 'buttons#index', :as => :buttons_settings
+    resources :channels
   end
 
   scope ":username" do
-    resources :channels
-    #resources :buttons
+    match '/:id', to: 'channels#broadcast', :as => :broadcast_channel
   end
 
   match '/:username', to: 'channels#index', :as => :home

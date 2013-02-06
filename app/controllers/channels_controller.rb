@@ -1,11 +1,13 @@
 class ChannelsController < ApplicationController
-  before_filter :login_user_only, except: [:index, :show]
+  before_filter :login_user_only, except: [:broadcast]
+  layout 'layouts/settings', except: [:broadcast]
 
   def index
+    @channel = Channel.all
   end
 
-  def show
-    render_404 unless @channel = Channel.where(_id: params[:id]).first
+  def broadcast
+    render_404 unless @channel = current_user.channels.find(params[:id])
   end
 
   def new
@@ -42,9 +44,12 @@ class ChannelsController < ApplicationController
   end
 
   def update
-    @channel = Channel.where(_id: params[:id]).first
+    @channel = login_user.channels.find(params[:id])
     if @channel.update_attributes(params[@channel.class.to_s.underscore])
-      redirect_to channel_path(login_user.username, @channel.id)
+      redirect_to edit_channel_path(@channel.id),
+        flash: {notice: t('channels.update.saved',
+                          path_to_broadcast_page: broadcast_channel_path(login_user.username, @channel.id),
+                         ).html_safe}
     else
       render :edit
     end

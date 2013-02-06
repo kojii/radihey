@@ -1,3 +1,10 @@
 .main#edit-channel
   h1= t('.title')
+  = bootstrap_flash
   = render 'form'
+  #owner-actions
+    p= t('.owner_actions')
+    ul.actions
+      li= link_to t('.back'), channels_path
+      li.separator |
+      li= link_to t('.show_broadcast_page'), broadcast_channel_path(login_user.username, @channel.id), target: '_blank'

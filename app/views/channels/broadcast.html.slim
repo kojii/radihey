@@ -1,0 +1,10 @@
+.main.show-channel
+  h1= @channel.title
+  p= @channel.description
+
+  - if @channel._type == UstreamChannel.to_s
+    .video-and-buttons.clearfix
+      #video
+        p= @channel.embed_tag.html_safe
+      .buttons
+        = render partial: 'components/buttons', locals: {buttons: @channel.buttons}

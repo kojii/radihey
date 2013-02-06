@@ -1,4 +1,4 @@
-= form_for(@channel, url: @channel.new_record? ? channels_path : channel_path(login_user.username, @channel.id), html: {class: 'form-horizontal'}) do |f|
+= form_for(@channel, url: @channel.new_record? ? channels_path : channel_path(@channel.id), html: {class: 'form-horizontal'}) do |f|
   - if @channel.errors.any?
     #error_explanation
       h2= t("mongoid.errors.models.channel.title", count: @channel.errors.count)
@@ -49,5 +49,4 @@
   = f.hidden_field(:_type)
   .control-group
     .controls
-      = link_to t('.cancel'), channel_path(login_user.username, @channel.id), class: 'btn cancel-btn'
       = f.submit(@channel.new_record? ? t('.create') : t('.update'), class: 'btn')

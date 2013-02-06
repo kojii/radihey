@@ -5,7 +5,8 @@ ja:
     setting_sidebar:
       setting_menu: '設定メニュー'
       account_settings: 'アカウント設定'
-      button_settings: 'ボタン設定'
+      buttons_settings: 'ボタン管理'
+      channels_settings: 'チャンネル管理'
     header:
       join: '新規登録'
       login: 'ログイン'
@@ -79,15 +80,26 @@ ja:
 
   channels:
     index:
-      title: '%{name}さんのチャンネル'
+      title: 'チャンネル管理'
+      edit: '編集'
+      destroy: '削除'
     show:
-      owner_actions: 'オーナー専用操作'
-      edit_channel: 'チャンネルの編集'
-      delete_channel: 'チャンネルの削除'
+      preview: 'プレビュー - '
+      owner_actions: '操作メニュー'
+      index: 'チャンネル一覧'
+      edit: '編集'
+      destroy: '削除'
     new:
       title: 'チャンネルの作成'
+      back: '一覧にもどる'
+      owner_actions: '操作メニュー'
     edit:
       title: 'チャンネルの編集'
+      show_broadcast_page: 'このチャンネルの視聴ページを開く'
+      back: '一覧にもどる'
+      owner_actions: '操作メニュー'
+    update:
+      saved: '保存しました。 <a href="%{path_to_broadcast_page}" target="_blank">このチャンネルの視聴ページを開く</a>'
     form:
       title: 'チャンネルのタイトル'
       description: 'チャンネルの説明'
@@ -99,7 +111,6 @@ ja:
       ac_ust: '以下の情報を自動入力する'
       invalid_url: '正しいUstreamの動画URLを入れてください。'
       buttons: '使うボタン'
-      cancel: 'キャンセル'
   mailers:
     notifier:
       default_from: 'miyake@growmonth.ly'
