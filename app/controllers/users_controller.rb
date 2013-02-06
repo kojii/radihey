@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  layout 'layouts/settings', only: [:edit, :update]
 
   def new
     return redirect_to root_path if logged_in?
@@ -38,7 +39,7 @@ class UsersController < ApplicationController
   def update
     return render_404 unless login_user
     if login_user.update_attributes(params[:user])
-      redirect_to home_path(login_user.username)
+      render :update
     else
       @user = login_user
       flash.now[:notice] = I18n.t("controllers.users.create.invalid_parameter")

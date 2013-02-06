@@ -2,11 +2,15 @@ ja:
   components:
     sidebar:
       channels: 'チャンネル'
+    setting_sidebar:
+      setting_menu: '設定メニュー'
+      account_settings: 'アカウント設定'
+      button_settings: 'ボタン設定'
     header:
       join: '新規登録'
       login: 'ログイン'
       logout: 'ログアウト'
-      account_settings: 'アカウント設定'
+      settings: '設定'
 
   buttons:
     index:
@@ -43,6 +47,22 @@ ja:
       login: 'ログインする'
 
   users:
+    show:
+      title: 'アカウント設定'
+      username: 'ユーザ名'
+      email: 'メールアドレス'
+      password: 'パスワード'
+      not_shown: '非表示になっています。'
+      edit: '編集'
+    update:
+      title: 'アカウント設定'
+      username: 'ユーザ名'
+      email: 'メールアドレス'
+      password: 'パスワード'
+      not_shown: '非表示になっています。'
+      owner_actions: '操作メニュー'
+      edit: '設定しなおす'
+      updated: 'アカウント情報を更新しました。'
     new:
       title: '新規ユーザ登録'
     edit:

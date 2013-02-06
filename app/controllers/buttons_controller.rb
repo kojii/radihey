@@ -1,4 +1,6 @@
 class ButtonsController < ApplicationController
+  layout 'layouts/settings'
+
   def index
     @buttons = login_user.buttons
   end
