@@ -6,11 +6,8 @@
     .video-and-buttons.clearfix
       #video
         p= @channel.embed_tag.html_safe
-      #buttons
-        - @channel.buttons.each do |button|
-          .button_wrap
-            = image_tag(button.button_image.filename, class: 'button')
-            .button_label= button.button_label
+      .buttons
+        = render partial: 'components/buttons', locals: {buttons: @channel.buttons}
 
   - if owner?
     #owner-actions

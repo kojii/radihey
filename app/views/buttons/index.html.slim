@@ -1,5 +1,3 @@
-h1= "#{current_user.username}さんが作成したボタンの一覧"
-ul
-  - @buttons.each do |button|
-    li= image_tag button.button_image.filename
-    li= link_to button.name, button_path(login_user.username, button.id)
+.main#index-buttons
+  h1= t('.title', name: login_user.username)
+  = render partial: 'components/buttons', locals: {buttons: @buttons, __show_link__: true}

@@ -15,7 +15,8 @@ window.change_ac_ust_submit = (show_warning=true) ->
     $('.invalid_url').addClass('show') if show_warning
 
 $ ->
-  window.change_ac_ust_submit(false)
+  if $('#ustream_channel_url').length > 0
+    window.change_ac_ust_submit(false)
 
   $('#ustream_channel_url').bind 'paste keyup', ->
     window.change_ac_ust_submit()

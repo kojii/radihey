@@ -9,6 +9,8 @@ ja:
       account_settings: 'アカウント設定'
 
   buttons:
+    index:
+      title: '%{name}さんのボタン一覧'
     form:
       create: '作成する'
       update: '保存する'
@@ -18,6 +20,7 @@ ja:
       button_label: 'ボタンに載せる文字'
       uploaded_file: 'アップロード済みファイル'
       cancel: 'キャンセル'
+      choose: '以下から選んでください。'
     new:
       title: '新規ボタン作成'
     edit:
@@ -26,6 +29,10 @@ ja:
       index: 'ボタンの一覧'
       edit: 'ボタンの編集'
       destroy: 'ボタンの削除'
+      name: 'ボタンの名前'
+      button_label: 'ボタンに載せる文字'
+      button_se: 'ボタンの効果音'
+      owner_actions: '操作'
 
   user_sessions:
     new:

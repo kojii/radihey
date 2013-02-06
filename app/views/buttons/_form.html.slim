@@ -1,5 +1,5 @@
 = form_for(@button,
-  url: @button.new_record? ? buttons_path(login_user.username) : button_path(login_user.username, @button.id),
+  url: @button.new_record? ? buttons_path : button_path(@button.id),
   html: {class: 'form-horizontal'}) do |f|
   - if @button.errors.any?
     #error_explanation
@@ -30,12 +30,18 @@
   = f.label t('.button_image') do
     label.control-label= t('.button_image')
     .controls
-      - ButtonImage.all.each do |bi|
-        .wrap
-          = f.radio_button :button_image_id, bi.id
-          = image_tag(bi.filename)
+      p.choose= t('.choose')
+
+  .buttons-container
+    - @button_images.each do |bi|
+      div(class="button_wrap")
+        = image_tag bi.filename, class: 'button_image_for_choosing'
+        a.button_label= @button.button_label
+        a(data-button_image_id='#{bi.id}' class="click_target #{' active' if @button.button_image_id == bi.id}")
+
+  = f.hidden_field :button_image_id
 
   .control-group
     .controls
-      = link_to t('.cancel'), buttons_path(login_user.username), class: 'btn cancel-btn'
+      = link_to t('.cancel'), buttons_path, class: 'btn cancel-btn'
       = f.submit(value: @button.new_record? ? t('.create') : t('.update'), class: 'btn')

@@ -6,7 +6,8 @@ RadiheyRails::Application.routes.draw do
   match 'join', to: 'users#new', :as => :join
   match 'login', to: 'user_sessions#new', :as => :login
   match 'logout', to: 'user_sessions#destroy', :as => :logout
-  match 'account_settings', to: 'users#edit', :as => :account_settings
+
+  #match 'account_settings', to: 'users#edit', :as => :account_settings
 
   resources :user_sessions
 
@@ -14,9 +15,15 @@ RadiheyRails::Application.routes.draw do
     get :pre_registered
   end
 
+  scope 'settings' do
+    match 'account', to: 'users#edit', :as => :account_settings
+    resources :buttons
+    #match 'buttons', to: 'buttons#index', :as => :buttons_settings
+  end
+
   scope ":username" do
     resources :channels
-    resources :buttons
+    #resources :buttons
   end
 
   match '/:username', to: 'channels#index', :as => :home
