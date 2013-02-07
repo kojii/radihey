@@ -255,6 +255,7 @@ DEPENDENCIES
   bson_ext
   coffee-rails (~> 3.2.1)
   database_cleaner
+  delayed_job
   delayed_job_mongoid
   factory_girl_rails
   guard-rspec

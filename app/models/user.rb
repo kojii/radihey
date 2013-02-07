@@ -51,11 +51,15 @@ class User
     # Userドキュメントの updated_at フィールドを現在時刻で
     # 書き換えることで、そのアカウントを有効化できる期間を延ばす。
     self.update_attribute(:updated_at, Time.now)
-    Notifier.send_activation_instructions(self.id, @callback_url).deliver
+    Notifier.delay.send_activation_instructions(self.id, @callback_url)
   end
 
   def owner_of?(channel)
     self.channel_ids.include?(channel.id)
+  end
+
+  def send_test_mail
+    Notifier.delay.send_test_mail(self.id, @callback_url)
   end
 
   class << self
@@ -67,12 +71,12 @@ class User
   private
   # 登録後にアカウントを有効化するための指示が書かれたメールをユーザに送る。
   def send_pre_register_mail
-    Notifier.send_pre_register_mail(self.id, @callback_url).deliver
+    Notifier.delay.send_pre_register_mail(self.id, @callback_url)
   end
 
   # 本登録完了を通知するメールを送る。
   def send_activate_mail
-    Notifier.send_activate_mail(self.id, @callback_url).deliver
+    Notifier.delay.send_activate_mail(self.id, @callback_url)
   end
 
   # 本登録用トークンを作成する。

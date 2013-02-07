@@ -16,4 +16,10 @@ class Notifier < ActionMailer::Base
     mail(to: @user.email, subject: t("mailers.notifier.send_activate_mail.subject"))
   end
 
+  def send_test_mail(user_id, callback_url=nil)
+    @user = User.find(user_id)
+    @callback_url = callback_url
+    mail(to: @user.email, subject: t("mailers.notifier.send_test_mail.subject"))
+  end
+
 end

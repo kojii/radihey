@@ -115,6 +115,8 @@ ja:
         subject: '[Radihey] 仮登録完了'
       send_activate_mail:
         subject: '[Radihey] 本登録完了'
+      send_test_mail:
+        subject: '[Radihey] テストメール'
   copy: '&copy;ラジへぇ 2013'
 
   mongoid:

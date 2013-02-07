@@ -56,6 +56,7 @@ gem 'authlogic'
 gem 'aasm'
 
 # delayed_job
+gem 'delayed_job'
 gem 'delayed_job_mongoid'
 
 # template engine
@@ -75,5 +76,7 @@ gem 'slim'
 
 # To use debugger
 # gem 'debugger'
-#
-#
+##
+##
+##
+##
