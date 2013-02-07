@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-  helper_method :logged_in?, :login_user, :parse_message, :current_user
+  helper_method :logged_in?, :login_user, :login_user_only, :parse_message, :current_user
 
   private
   def logged_in?
@@ -31,7 +31,7 @@ class ApplicationController < ActionController::Base
   end
 
   def login_user_only
-    return render_404 unless logged_in?
+    return redirect_to root_path unless logged_in?
   end
 
   def render_404
@@ -52,4 +52,5 @@ class ApplicationController < ActionController::Base
 
     return @current_user
   end
+
 end

@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   layout 'layouts/settings', only: [:edit, :update]
+  before_filter :login_user_only, only: [:edit, :update, :destroy]
 
   def new
     return redirect_to root_path if logged_in?
@@ -32,12 +33,10 @@ class UsersController < ApplicationController
   end
 
   def edit
-    return render_404 unless login_user
     @user = login_user
   end
 
   def update
-    return render_404 unless login_user
     if login_user.update_attributes(params[:user])
       redirect_to edit_user_path(login_user.username), flash: {notice: I18n.t('users.update.saved')}
     else
@@ -48,7 +47,6 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    return render_404 unless login_user
     login_user.leave
     if login_user.save
       redirect_to leaved_user_path

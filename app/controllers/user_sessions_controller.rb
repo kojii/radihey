@@ -3,8 +3,11 @@ class UserSessionsController < ApplicationController
   respond_to :html
 
   def new
-    return redirect_to root_url( :protocol=> 'http' ) if login_user
+    return redirect_to root_path if login_user
     @user_session = UserSession.new
+    unless /^https?:\/\/#{RadiheyRails::HOST}\/user_sessions/ =~ request.referer
+      session[:login_origin] = request.referer
+    end
   end
 
   #
@@ -16,10 +19,16 @@ class UserSessionsController < ApplicationController
     if @user_session.save
       headers["P3P"] = "CP='IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT'"
       notice         = parse_message I18n.t "controllers.user_sessions.login"
-      return redirect_to home_path(login_user.username)
+      if session[:login_origin]
+        redirect_to session[:login_origin]
+        session.delete(:login_origin)
+      else
+        redirect_to home_path(login_user.username)
+      end
+    else
+      # ログイン失敗
+      render :action => :new , :notice => I18n.t("controllers.user_sessions.fail")
     end
-    # ログイン失敗
-    render :action => :new , :notice => I18n.t("controllers.user_sessions.fail")
   end
 
   #
@@ -27,7 +36,7 @@ class UserSessionsController < ApplicationController
   #
   def destroy
     logout
-    redirect_to root_url
+    redirect_to request.referer
   end
 
 private

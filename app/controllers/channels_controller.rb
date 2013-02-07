@@ -1,6 +1,6 @@
 class ChannelsController < ApplicationController
-  before_filter :login_user_only, except: [:broadcast]
   layout 'layouts/settings', except: [:broadcast]
+  before_filter :login_user_only, except: [:broadcast]
 
   def index
     @channels = login_user.channels.desc(:updated_at)

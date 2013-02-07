@@ -1,5 +1,6 @@
 class ButtonsController < ApplicationController
   layout 'layouts/settings'
+  before_filter :login_user_only
 
   def index
     @buttons = login_user.buttons.desc(:updated_at)
