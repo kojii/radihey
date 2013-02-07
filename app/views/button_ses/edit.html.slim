@@ -1,0 +1,10 @@
+.main#edit_button_se
+  h1= t('.title')
+  = bootstrap_flash
+  = render 'form'
+  #owner_actions
+    p= t('.owner_actions')
+    ul.actions
+      li= link_to t('.back'), button_ses_path
+      li.separator |
+      li= link_to t('.destroy'), button_se_path(@button_se.id), :method => :delete, confirm: 'OK?'

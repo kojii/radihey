@@ -1,4 +1,4 @@
-.main#channels
+.main#index_channel
   h1= t('.title', name: login_user.username)
 
   p
@@ -13,4 +13,4 @@
         ul.actions
           li= link_to t('.edit'), edit_channel_path(channel.id)
           li.separator |
-          li= link_to t('.destroy'), channel_path(channel.id), :method => :destroy, :confirm => 'OK?'
+          li= link_to t('.destroy'), channel_path(channel.id), :method => :delete, :confirm => 'OK?'

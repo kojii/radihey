@@ -9,28 +9,25 @@
           li= msg
 
   .control-group
-    = f.label t('.name') do
-      label.control-label= t('.name')
-      .controls
-        = f.text_field(:name)
+    label.control-label= t('.name')
+    .controls
+      = f.text_field(:name)
 
   .control-group
-    = f.label t('.button_se') do
-      label.control-label= t('.button_se')
-      .controls
-        = f.select(:button_se_id, ButtonSe.all.map{|s| [s.name, s.id]}, 'selected' => @button.button_se_id)
+    label.control-label= t('.button_se')
+    .controls
+      = f.select(:button_se_id, ButtonSe.all.map{|s| [s.name, s.id]}, 'selected' => @button.button_se_id)
+      p= link_to t('.custom_button_se'), button_ses_path
 
   .control-group
-    = f.label t('.button_label') do
-      label.control-label= t('.button_label')
-      .controls
-        = f.text_field(:button_label)
+    label.control-label= t('.button_label')
+    .controls
+      = f.text_field(:button_label)
 
   .control-group
-    = f.label t('.button_image') do
-      label.control-label= t('.button_image')
-      .controls
-        p.choose= t('.choose')
+    label.control-label= t('.button_image')
+    .controls
+      p.choose= t('.choose')
 
   .buttons-container
     - @button_images.each do |bi|

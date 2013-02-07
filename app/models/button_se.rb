@@ -5,5 +5,5 @@ class ButtonSe
   field :name,  type: String
   field :audio, type: String, default: 'button_hee'
 
-  validates :name, :audio, presence: true
+  validates :name, presence: true
 end

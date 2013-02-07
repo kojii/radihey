@@ -1,0 +1,20 @@
+.main#index_button_se
+  h1= t('.title', name: login_user.username)
+
+  p
+    = link_to t('.new'), new_button_se_path, class: 'btn new-btn'
+
+  .button_ses
+    - @button_ses.each do |button_se|
+      .button_se_row
+        .button_se_wrap
+          = image_tag 'default-channel-icon.png', class: 'icon'
+        .description
+          p
+            = button_se.name
+            i.icon-music.play_se(data-sound-url='#{button_se.audio}')
+          ul.actions
+            li
+              = link_to t('.edit'), edit_button_se_path(button_se.id)
+            li.separator |
+            li= link_to t('.destroy'), button_se_path(button_se.id), :method => :delete, :confirm => 'OK?'

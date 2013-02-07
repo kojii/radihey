@@ -2,9 +2,15 @@
   h1= @channel.title
   p= @channel.description
 
-  - if @channel._type == UstreamChannel.to_s
+  - if @channel.is_a?(UstreamChannel)
     .video-and-buttons.clearfix
       #video
         p= @channel.embed_tag.html_safe
       .buttons
         = render partial: 'components/buttons', locals: {buttons: @channel.buttons}
+
+  - if login_user.is_the_owner_of?(@channel)
+    #owner_actions
+      p= t('.owner_actions')
+      ul.actions
+        li= link_to t('.edit'), edit_channel_path(@channel.id)

@@ -1,5 +1,5 @@
 defaults: &defaults
-  bucket: 'radiheirails-kari'
+  bucket: 'radiheyrails-kari'
   access_key_id: 'AKIAIXBIF6NFJAW6KPVQ'
   secret_access_key: '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'
 

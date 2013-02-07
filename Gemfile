@@ -62,6 +62,7 @@ gem 'delayed_job_mongoid'
 # template engine
 gem 'slim'
 
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
@@ -76,7 +77,3 @@ gem 'slim'
 
 # To use debugger
 # gem 'debugger'
-##
-##
-##
-##

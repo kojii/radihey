@@ -1,0 +1,27 @@
+= form_for @button_se,
+  url: @button_se.new_record? ? button_ses_path : button_se_path(@button_se.id),
+  html: {class: 'form-horizontal'} do |f|
+  - if @button_se.errors.any?
+    #error_explanation
+      h2= t("mongoid.errors.models.button_se.title", count: @button_se.errors.count)
+      ul
+        - @button_se.errors.full_messages.each do |msg|
+          li= msg
+
+  .control-group
+    label.control-label= t('.name')
+    .controls
+      = f.text_field(:name)
+
+  .control-group
+    label.control-label= t('.uploaded_audio')
+    .controls
+      = f.file_field(:uploaded_audio)
+      - if @button_se.uploaded_audio.exists?
+        p
+          = t('.uploaded_audio_file_name', filename: @button_se.uploaded_audio_file_name)
+          i.icon-music.play_se(data-sound-url='#{@button_se.audio}')
+
+  .control-group
+    .controls
+      = f.submit(value: @button_se.new_record? ? t('.create') : t('.update'), class: 'btn')

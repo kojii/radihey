@@ -5,8 +5,9 @@ ja:
     setting_sidebar:
       setting_menu: '設定メニュー'
       account_settings: 'アカウントの設定'
-      buttons_settings: 'オリジナルボタンの管理'
       channels_settings: 'チャンネルの管理'
+      buttons_settings: 'オリジナルボタンの管理'
+      button_ses_settings: 'オリジナル効果音の管理'
     header:
       join: '新規登録'
       login: 'ログイン'
@@ -29,6 +30,7 @@ ja:
       uploaded_file: 'アップロード済みファイル'
       cancel: 'キャンセル'
       choose: '以下から選んでください。'
+      custom_button_se: '（オリジナル効果音も作れます）'
     new:
       title: '新規ボタン作成'
       owner_actions: '操作'
@@ -47,6 +49,30 @@ ja:
       button_label: 'ボタンに載せる文字'
       button_se: 'ボタンの効果音'
       owner_actions: '操作'
+
+  button_ses:
+    index:
+      title: 'オリジナル効果音の管理'
+      new: '新しい効果音をつくる'
+      edit: '編集'
+      destroy: '削除'
+    new:
+      title: '効果音の新規作成'
+      owner_actions: '操作メニュー'
+      back: '一覧に戻る'
+    edit:
+      title: '効果音の編集'
+      owner_actions: '操作メニュー'
+      back: '一覧に戻る'
+      destroy: '削除'
+    update:
+      saved: '保存しました。'
+    form:
+      name: '効果音の名前'
+      uploaded_audio: '効果音ファイル'
+      uploaded_audio_file_name: 'アップロード済ファイル: %{filename}'
+      create: '作成する'
+      update: '保存する'
 
   user_sessions:
     new:
@@ -86,6 +112,9 @@ ja:
       new: '新しいチャンネルをつくる'
       edit: '編集'
       destroy: '削除'
+    broadcast:
+      owner_actions: 'チャンネルオーナー専用の操作'
+      edit: '編集'
     new:
       title: 'チャンネルの作成'
       back: '一覧にもどる'
@@ -136,6 +165,9 @@ ja:
         name: 'ボタンの名前'
         se: '効果音'
         image: 'ボタンの画像'
+      button_se:
+        name: '効果音の名前'
+        uploaded_audio: '効果音ファイル'
     errors:
       models:
         ustream_channel:
@@ -176,6 +208,16 @@ ja:
               blank: 'は必須項目です。'
             image:
               blank: 'は必須項目です。'
+        button_se:
+          attributes:
+            name:
+              blank: 'は必須項目です。'
+            audio:
+              blank: 'は必須項目です。'
+            uploaded_audio:
+              blank: 'は必須項目です。'
+            uploaded_audio_content_type:
+              invalid: 'には、wav形式のファイルを指定してください。'
 
   custom_validation:
     invalid_url: 'には正しい Ustream のURLを入力してください。'

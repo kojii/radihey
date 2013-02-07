@@ -23,8 +23,23 @@ class User
     end
   end
 
-  has_many :channels, :inverse_of => :owner, :dependent => :destroy
-  has_many :buttons, :inverse_of => :owner
+  has_many :channels,   :inverse_of => :owner, :dependent => :destroy
+  has_many :buttons,    :inverse_of => :owner, :dependent => :destroy do
+    def default
+      where(_type: DefaultButton.to_s)
+    end
+    def custom
+      where(_type: CustomButton.to_s)
+    end
+  end
+  has_many :button_ses, :inverse_of => :owner, :dependent => :destroy do
+    def default
+      where(_type: DefaultButtonSe.to_s)
+    end
+    def custom
+      where(_type: CustomButtonSe.to_s)
+    end
+  end
 
   @@reserved_words = %w(active_admin admin official info support login logout join agreement commerce individual leave disconnect owners auth users settings uploaded_images payments profiles apply activation tags tutorial).join("|")
   validates :email, :username, :presence => true
@@ -54,7 +69,7 @@ class User
     Notifier.delay.send_activation_instructions(self.id, @callback_url)
   end
 
-  def owner_of?(channel)
+  def is_the_owner_of?(channel)
     self.channel_ids.include?(channel.id)
   end
 
