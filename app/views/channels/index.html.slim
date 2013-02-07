@@ -8,7 +8,7 @@
     - @channels.each do |channel|
       li.channel
         = image_tag 'default-channel-icon.png', class: 'icon'
-        p= link_to channel.title, broadcast_path(login_user.username, channel.id)
+        p= link_to channel.title, broadcast_channel_path(login_user.username, channel.id)
         p= channel.description
         ul.actions
           li= link_to t('.edit'), edit_channel_path(channel.id)
