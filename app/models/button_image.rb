@@ -3,4 +3,6 @@ class ButtonImage
   include Mongoid::Timestamps
 
   field :filename, type: String
+  has_many :button
+
 end

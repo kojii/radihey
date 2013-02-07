@@ -20,6 +20,8 @@ ja:
       new: '新しいボタンをつくる'
       edit: '編集'
       destroy: '削除'
+      used_by: '以下のチャンネルに使われています。'
+      not_used: 'このボタンは使われていません。'
     form:
       create: '作成する'
       update: '保存する'
@@ -56,6 +58,8 @@ ja:
       new: '新しい効果音をつくる'
       edit: '編集'
       destroy: '削除'
+      used_by: '以下のボタンに使われています。'
+      not_used: 'この効果音は使われていません。'
     new:
       title: '効果音の新規作成'
       owner_actions: '操作メニュー'
@@ -165,6 +169,8 @@ ja:
         name: 'ボタンの名前'
         se: '効果音'
         image: 'ボタンの画像'
+      custom_button:
+        button_image_id: '使用するボタン'
       button_se:
         name: '効果音の名前'
         uploaded_audio: '効果音ファイル'
@@ -218,6 +224,10 @@ ja:
               blank: 'は必須項目です。'
             uploaded_audio_content_type:
               invalid: 'には、wav形式のファイルを指定してください。'
+        custom_button:
+          attributes:
+            button_image_id:
+              blank: 'を選択してください。'
 
   custom_validation:
     invalid_url: 'には正しい Ustream のURLを入力してください。'

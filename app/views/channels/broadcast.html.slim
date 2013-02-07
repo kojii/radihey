@@ -9,7 +9,7 @@
       .buttons
         = render partial: 'components/buttons', locals: {buttons: @channel.buttons}
 
-  - if login_user.is_the_owner_of?(@channel)
+  - if @channel.is_owned_by?(login_user)
     #owner_actions
       p= t('.owner_actions')
       ul.actions

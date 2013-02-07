@@ -9,6 +9,7 @@ class Channel
 
   validates :title, :description, presence: true
 
-  set_callback(:create, :after) do
+  def is_owned_by?(user)
+    self.owner == user
   end
 end

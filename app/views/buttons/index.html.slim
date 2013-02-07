@@ -1,9 +1,7 @@
 .main#index_button
-  h1= t('.title', name: login_user.username)
-
+  h1= t('.title')
   p
     = link_to t('.new'), new_button_path, class: 'btn new-btn'
-
   .buttons
     - @buttons.each do |button|
       .button_row
@@ -11,8 +9,16 @@
           = image_tag(button.button_image.filename)
           a.button_label= button.button_label
         .description
-          p= button.name
+          p.button_name= button.name
           ul.actions
             li= link_to t('.edit'), edit_button_path(button.id)
             li.separator |
             li= link_to t('.destroy'), button_path(button.id), :method => :delete, :confirm => 'OK?'
+
+          - if button.channels.count <= 0
+            p= t('.not_used')
+          - else
+            p.used_by= t('.used_by')
+            ul.used_by_channels
+              - button.channels.each do |channel|
+                li= link_to channel.title, edit_channel_path(channel.id), target: '_blank'

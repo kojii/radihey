@@ -69,10 +69,6 @@ class User
     Notifier.delay.send_activation_instructions(self.id, @callback_url)
   end
 
-  def is_the_owner_of?(channel)
-    self.channel_ids.include?(channel.id)
-  end
-
   def send_test_mail
     Notifier.delay.send_test_mail(self.id, @callback_url)
   end

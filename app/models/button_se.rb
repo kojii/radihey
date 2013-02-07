@@ -4,6 +4,7 @@ class ButtonSe
 
   field :name,  type: String
   field :audio, type: String, default: 'button_hee'
+  has_many :buttons
 
   validates :name, presence: true
 end

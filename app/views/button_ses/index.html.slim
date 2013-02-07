@@ -10,7 +10,7 @@
         .button_se_wrap
           = image_tag 'default-channel-icon.png', class: 'icon'
         .description
-          p
+          p.button_se_name
             = button_se.name
             i.icon-music.play_se(data-sound-url='#{button_se.audio}')
           ul.actions
@@ -18,3 +18,11 @@
               = link_to t('.edit'), edit_button_se_path(button_se.id)
             li.separator |
             li= link_to t('.destroy'), button_se_path(button_se.id), :method => :delete, :confirm => 'OK?'
+
+          - if button_se.buttons.count <= 0
+            p= t('.not_used')
+          - else
+            p.used_by= t('.used_by')
+            ul.used_by_buttons
+              - button_se.buttons.each do |button|
+                li= link_to button.name, edit_button_path(button.id), target: '_blank'
