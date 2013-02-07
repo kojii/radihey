@@ -24,10 +24,10 @@ ButtonImage.create({filename: 'button_ee.png'})
 ButtonImage.create({filename: 'button_warai.png'})
 ButtonImage.create({filename: 'button_majide.png'})
 
-ButtonSe.delete_all
-ButtonSe.create({name: 'へぇ〜', audio: 'se_hee'})
-ButtonSe.create({name: 'はい', audio: 'se_hai'})
-ButtonSe.create({name: 'いいね！', audio: 'se_iine'})
-ButtonSe.create({name: 'え〜', audio: 'se_ee'})
-ButtonSe.create({name: '笑', audio: 'se_warai'})
-ButtonSe.create({name: 'マジで！', audio: 'se_majide'})
+DefaultButtonSe.delete_all
+DefaultButtonSe.create({name: 'へぇ〜', audio: 'se_hee'})
+DefaultButtonSe.create({name: 'はい', audio: 'se_hai'})
+DefaultButtonSe.create({name: 'いいね！', audio: 'se_iine'})
+DefaultButtonSe.create({name: 'え〜', audio: 'se_ee'})
+DefaultButtonSe.create({name: '笑', audio: 'se_warai'})
+DefaultButtonSe.create({name: 'マジで！', audio: 'se_majide'})
