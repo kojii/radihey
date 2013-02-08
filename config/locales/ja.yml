@@ -14,6 +14,11 @@ ja:
       logout: 'ログアウト'
       settings: '設定'
 
+  top:
+    show:
+      title: 'ラジへぇ'
+      summary: 'ラジへぇは、・・で・・なサービスです！'
+
   buttons:
     index:
       title: 'オリジナルボタンの管理'
