@@ -1,5 +1,6 @@
 # coding:utf-8
 
+User.destroy_all
 Station.delete_all
 Station.create({code: 'tbs-radio',      name: 'TBSラジオ'})
 Station.create({code: 'bunka-housou',   name: '文化放送'})
@@ -25,12 +26,12 @@ bi_warai = ButtonImage.create({filename: 'button_warai.png'})
 bi_majide = ButtonImage.create({filename: 'button_majide.png'})
 
 ButtonSe.delete_all
-dbs_hee = DefaultButtonSe.create({name: 'へぇ〜', audio: 'se_hee'})
-dbs_hai = DefaultButtonSe.create({name: 'はい', audio: 'se_hai'})
-dbs_iine = DefaultButtonSe.create({name: 'いいね！', audio: 'se_iine'})
-dbs_ee = DefaultButtonSe.create({name: 'え〜', audio: 'se_ee'})
-dbs_warai = DefaultButtonSe.create({name: '笑', audio: 'se_warai'})
-dbs_majide = DefaultButtonSe.create({name: 'マジで！', audio: 'se_majide'})
+dbs_hee = DefaultButtonSe.create({name: 'へぇ〜', audio: 'https://s3-ap-northeast-1.amazonaws.com/radiheyrails-kari/button_se/default_audios/he.wav'})
+dbs_hai = DefaultButtonSe.create({name: 'はい', audio: 'https://s3-ap-northeast-1.amazonaws.com/radiheyrails-kari/button_se/default_audios/hai.wav'})
+dbs_iine = DefaultButtonSe.create({name: 'いいね！', audio: 'https://s3-ap-northeast-1.amazonaws.com/radiheyrails-kari/button_se/default_audios/iine.wav'})
+dbs_ee = DefaultButtonSe.create({name: 'え〜', audio: 'https://s3-ap-northeast-1.amazonaws.com/radiheyrails-kari/button_se/default_audios/ee.wav'})
+dbs_warai = DefaultButtonSe.create({name: '笑', audio: 'https://s3-ap-northeast-1.amazonaws.com/radiheyrails-kari/button_se/default_audios/warai.wav'})
+dbs_majide = DefaultButtonSe.create({name: 'マジで！', audio: 'https://s3-ap-northeast-1.amazonaws.com/radiheyrails-kari/button_se/default_audios/majide.wav'})
 
 Button.delete_all
 DefaultButton.create({name: 'へぇ〜', button_label: 'へぇ〜', button_se_id: dbs_hee.id, button_image_id: bi_hee.id})
