@@ -1,0 +1,8 @@
+defaults: &defaults
+  url: 'http://localhost:3030'
+
+development:
+  <<: *defaults
+
+production:
+  url: 'https://ec2-54-249-149-239.ap-northeast-1.compute.amazonaws.com'

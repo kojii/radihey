@@ -1,6 +1,10 @@
 .main.show-channel
   h1= @channel.title
   p= @channel.description
+  p
+    = t('.currently')
+    span.num-listeners
+    = t('.people_are_connecting')
 
   - if @channel.is_a?(UstreamChannel)
     .video-and-buttons.clearfix
@@ -14,3 +18,10 @@
       p= t('.owner_actions')
       ul.actions
         li= link_to t('.edit'), edit_channel_path(@channel.id)
+
+= content_for :bottom do
+  javascript:
+    client = new RadiheyNode('#{RadiheyNode::URL}', $.parseJSON('#{Hash.new.tap{|hash| @channel.buttons.each{|b| hash[b.id.to_s] = b.button_se.audio}}.to_json.html_safe}'))
+    client.socket.on('connected', function(data){
+      client.socket.emit('join', {'room':'room#{@channel.id}'});
+    });

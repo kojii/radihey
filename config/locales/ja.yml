@@ -124,6 +124,8 @@ ja:
     broadcast:
       owner_actions: 'チャンネルオーナー専用の操作'
       edit: '編集'
+      currently: '現在、'
+      people_are_connecting: '人が視聴中！'
     new:
       title: 'チャンネルの作成'
       back: '一覧にもどる'

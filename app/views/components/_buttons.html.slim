@@ -3,4 +3,4 @@
     .button_wrap
       = image_tag(button.button_image.filename)
       a.button_label= button.button_label
-      a.click_target
+      a.click_target(data-button_id='#{button.id}')
