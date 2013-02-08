@@ -2,4 +2,4 @@ pre registered
 p
   = @user.username
 p
-  = link_to activate_url(@user.pre_register_token), 'Activate'
+  = link_to 'Activate', activate_url(@user.pre_register_token, host: RadiheyRails::HOST)
