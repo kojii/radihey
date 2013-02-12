@@ -1,4 +1,5 @@
 = content_for :head do
+  = stylesheet_link_tag    "broadcast", :media => "all"
   = javascript_include_tag "#{RadiheyNode::URL}/socket.io/socket.io.js"
 
 = content_for :body do
