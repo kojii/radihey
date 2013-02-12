@@ -40,3 +40,9 @@ $ ->
           $('#ustream_channel_url').val("#{data.url}")
           $('#preview').val("#{data.url}")
       }
+
+  $('.click_target').bind 'click', ->
+    $(this).prev().addClass('clicked')
+  $('.button_label').bind 'animationend', ->
+    $(this).removeClass('clicked')
+

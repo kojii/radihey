@@ -17,6 +17,19 @@
       &:hover {
         text-decoration: none;
       }
+      &.clicked {
+        animation-duration: 165ms;
+        animation-name: animation01;
+        animation-timing-function: linear;
+        animation-direction: normal;
+        animation-delay: 0s;
+
+        -webkit-animation-duration: 165ms;
+        -webkit-animation-name: animation01;
+        -webkit-animation-timing-function: linear;
+        -webkit-animation-direction: normal;
+        -webkit-animation-delay: 0s;
+      }
     }
     .click_target {
       height: 100%;
@@ -28,5 +41,27 @@
       left: 0;
       .radiated-border(7px);
     }
+  }
+}
+
+@keyframes animation01 {
+  from {
+    transform: scale(1.0);
+    opacity: 1.0;
+  }
+  to {
+    transform: scale(2.5);
+    opacity: 0.0;
+  }
+}
+
+@-webkit-keyframes animation01 {
+  from {
+    -webkit-transform: scale(1.0);
+    opacity: 1.0;
+  }
+  to {
+    -webkit-transform: scale(2.5);
+    opacity: 0.0;
   }
 }
