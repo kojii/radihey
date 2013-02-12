@@ -1,5 +1,6 @@
 class ChannelsController < ApplicationController
-  layout 'layouts/settings', except: [:broadcast]
+  layout 'layouts/settings'
+  layout 'layouts/broadcast', only: [:broadcast]
   before_filter :login_user_only, except: [:broadcast]
 
   def index

@@ -1,0 +1,10 @@
+= content_for :head do
+  = javascript_include_tag "#{RadiheyNode::URL}/socket.io/socket.io.js"
+
+= content_for :body do
+  .span8.main_wrap
+    = yield
+  .span4.sidebar_wrap
+    = render 'components/sidebar'
+
+= render :partial => "layouts/base"
