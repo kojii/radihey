@@ -1,6 +1,5 @@
 class ChannelsController < ApplicationController
   layout 'layouts/settings'
-  layout 'layouts/broadcast', only: [:broadcast]
   before_filter :login_user_only, except: [:broadcast]
 
   def index
@@ -9,6 +8,7 @@ class ChannelsController < ApplicationController
 
   def broadcast
     render_404 unless @channel = current_user.channels.find(params[:id])
+    render layout: 'layouts/broadcast'
   end
 
   def new
