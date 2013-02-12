@@ -17,7 +17,7 @@
     label.control-label= t('.button_se')
     .controls
       = f.select(:button_se_id, ButtonSe.all.map{|s| [s.name, s.id]}, 'selected' => @button.button_se_id)
-      p= link_to t('.custom_button_se'), button_ses_path
+      p= link_to t('.custom_button_se'), button_ses_path, target: '_blank'
 
   .control-group
     label.control-label= t('.button_label')
@@ -31,8 +31,7 @@
 
   .buttons-container
     - @button_images.each do |bi|
-      div(class="button_wrap")
-        = image_tag bi.filename, class: 'button_image_for_choosing'
+      .button_wrap(class='#{bi.name}')
         a.button_label= @button.button_label
         a(data-button_image_id='#{bi.id}' class="click_target #{' active' if @button.button_image_id == bi.id}")
 

@@ -1,6 +1,8 @@
 # coding:utf-8
 
-User.destroy_all
+#User.destroy_all
+Channel.destroy_all
+
 Station.delete_all
 Station.create({code: 'tbs-radio',      name: 'TBSラジオ'})
 Station.create({code: 'bunka-housou',   name: '文化放送'})
@@ -18,25 +20,25 @@ Station.create({code: 'fm-yokohama',    name: 'ＦＭヨコハマ'})
 Station.create({code: 'housou-daigaku', name: '放送大学'})
 
 ButtonImage.delete_all
-bi_hee = ButtonImage.create({filename: 'button_hee.png'})
-bi_hai = ButtonImage.create({filename: 'button_hai.png'})
-bi_iine = ButtonImage.create({filename: 'button_iine.png'})
-bi_ee = ButtonImage.create({filename: 'button_ee.png'})
-bi_warai = ButtonImage.create({filename: 'button_warai.png'})
-bi_majide = ButtonImage.create({filename: 'button_majide.png'})
+bi_hee     = ButtonImage.create({filename: 'button_hee.png',    name: 'hee'})
+bi_hai     = ButtonImage.create({filename: 'button_hai.png',    name: 'hai'})
+bi_iine    = ButtonImage.create({filename: 'button_iine.png',   name: 'iine'})
+bi_ee      = ButtonImage.create({filename: 'button_ee.png',     name: 'ee'})
+bi_warai   = ButtonImage.create({filename: 'button_warai.png',  name: 'warai'})
+bi_majide  = ButtonImage.create({filename: 'button_majide.png', name: 'majide'})
 
 ButtonSe.delete_all
-dbs_hee = DefaultButtonSe.create({name: 'へぇ〜', audio: 'https://s3-ap-northeast-1.amazonaws.com/radiheyrails-kari/button_se/default_audios/he.wav'})
-dbs_hai = DefaultButtonSe.create({name: 'はい', audio: 'https://s3-ap-northeast-1.amazonaws.com/radiheyrails-kari/button_se/default_audios/hai.wav'})
-dbs_iine = DefaultButtonSe.create({name: 'いいね！', audio: 'https://s3-ap-northeast-1.amazonaws.com/radiheyrails-kari/button_se/default_audios/iine.wav'})
-dbs_ee = DefaultButtonSe.create({name: 'え〜', audio: 'https://s3-ap-northeast-1.amazonaws.com/radiheyrails-kari/button_se/default_audios/ee.wav'})
-dbs_warai = DefaultButtonSe.create({name: '笑', audio: 'https://s3-ap-northeast-1.amazonaws.com/radiheyrails-kari/button_se/default_audios/warai.wav'})
+dbs_hee    = DefaultButtonSe.create({name: 'へぇ〜',   audio: 'https://s3-ap-northeast-1.amazonaws.com/radiheyrails-kari/button_se/default_audios/he.wav'})
+dbs_hai    = DefaultButtonSe.create({name: 'はい',     audio: 'https://s3-ap-northeast-1.amazonaws.com/radiheyrails-kari/button_se/default_audios/hai.wav'})
+dbs_iine   = DefaultButtonSe.create({name: 'いいね！', audio: 'https://s3-ap-northeast-1.amazonaws.com/radiheyrails-kari/button_se/default_audios/iine.wav'})
+dbs_ee     = DefaultButtonSe.create({name: 'え〜',     audio: 'https://s3-ap-northeast-1.amazonaws.com/radiheyrails-kari/button_se/default_audios/ee.wav'})
+dbs_warai  = DefaultButtonSe.create({name: '笑',       audio: 'https://s3-ap-northeast-1.amazonaws.com/radiheyrails-kari/button_se/default_audios/warai.wav'})
 dbs_majide = DefaultButtonSe.create({name: 'マジで！', audio: 'https://s3-ap-northeast-1.amazonaws.com/radiheyrails-kari/button_se/default_audios/majide.wav'})
 
 Button.delete_all
-DefaultButton.create({name: 'へぇ〜', button_label: 'へぇ〜', button_se_id: dbs_hee.id, button_image_id: bi_hee.id})
-DefaultButton.create({name: 'はい', button_label: 'はい', button_se_id: dbs_hai.id, button_image_id: bi_hai.id})
-DefaultButton.create({name: 'いいね！', button_label: 'いいね！', button_se_id: dbs_iine.id, button_image_id: bi_iine.id})
-DefaultButton.create({name: 'え〜', button_label: 'え〜', button_se_id: dbs_ee.id, button_image_id: bi_ee.id})
-DefaultButton.create({name: '笑', button_label: '笑', button_se_id: dbs_warai.id, button_image_id: bi_warai.id})
+DefaultButton.create({name: 'へぇ〜',   button_label: 'へぇ〜',   button_se_id: dbs_hee.id,    button_image_id: bi_hee.id})
+DefaultButton.create({name: 'はい',     button_label: 'はい',     button_se_id: dbs_hai.id,    button_image_id: bi_hai.id})
+DefaultButton.create({name: 'いいね！', button_label: 'いいね！', button_se_id: dbs_iine.id,   button_image_id: bi_iine.id})
+DefaultButton.create({name: 'え〜',     button_label: 'え〜',     button_se_id: dbs_ee.id,     button_image_id: bi_ee.id})
+DefaultButton.create({name: '笑',       button_label: '笑',       button_se_id: dbs_warai.id,  button_image_id: bi_warai.id})
 DefaultButton.create({name: 'マジで！', button_label: 'マジで！', button_se_id: dbs_majide.id, button_image_id: bi_majide.id})

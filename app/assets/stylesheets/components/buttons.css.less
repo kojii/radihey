@@ -2,10 +2,49 @@
 .buttons-container {
   .clearfix();
   .button_wrap {
-    width: 31%;
+    width: 150px;
+    height: 98px;
     margin: 0 2% 10px 0;
     float: left;
     position: relative;
+    background-position: center;
+    background-size: cover;
+    &.hee {
+      background-image: asset-url('button_hee.png');
+      &.clicked {
+        background-image: asset-url('button_hee_click.png');
+      }
+    }
+    &.iine {
+      background-image: asset-url('button_iine.png');
+      &.clicked {
+        background-image: asset-url('button_iine_click.png');
+      }
+    }
+    &.ee {
+      background-image: asset-url('button_ee.png');
+      &.clicked {
+        background-image: asset-url('button_ee_click.png');
+      }
+    }
+    &.majide {
+      background-image: asset-url('button_majide.png');
+      &.clicked {
+        background-image: asset-url('button_majide_click.png');
+      }
+    }
+    &.warai {
+      background-image: asset-url('button_warai.png');
+      &.clicked {
+        background-image: asset-url('button_warai_click.png');
+      }
+    }
+    &.hai {
+      background-image: asset-url('button_hai.png');
+      &.clicked {
+        background-image: asset-url('button_hai_click.png');
+      }
+    }
     .button_label {
       position: absolute;
       top: 0;

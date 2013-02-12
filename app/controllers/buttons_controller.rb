@@ -34,7 +34,7 @@ class ButtonsController < ApplicationController
   def update
     @button = login_user.buttons.find(params[:id])
     if @button.update_attributes(params[:custom_button])
-      redirect_to edit_button_path(@button.id), flash: {notice: t('buttons.update.saved')}
+      redirect_to edit_button_path(@button.id), flash: {notice: t('buttons.update.saved', path_to_index: buttons_path).html_safe}
     else
       @button_images = ButtonImage.all
       render :edit

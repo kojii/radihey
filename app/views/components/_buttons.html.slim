@@ -1,6 +1,5 @@
 .buttons-container
   - buttons.each do |button|
-    .button_wrap
-      = image_tag(button.button_image.filename)
+    .button_wrap(class='#{button.button_image.name}')
       a.button_label= button.button_label
       a.click_target(data-button_id='#{button.id}')

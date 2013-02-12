@@ -47,7 +47,7 @@ ja:
       owner_actions: '操作'
       back: '一覧に戻る'
     update:
-      saved: '保存しました。'
+      saved: '保存しました。 <a href="%{path_to_index}">ボタン一覧ページに戻る</a>'
     show:
       index: 'ボタンの一覧'
       edit: 'ボタンの編集'
