@@ -1,0 +1,16 @@
+doctype 5
+html
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, user-scalable=no")
+    = stylesheet_link_tag    "application", :media => "all"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+    = yield :head
+  body
+    = render 'components/header'
+    .container-fluid.content
+      .row-fluid
+        = yield :body
+    = render 'components/footer'
+    = yield :bottom

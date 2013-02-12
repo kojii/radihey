@@ -1,19 +1,10 @@
-doctype 5
-html
-  head
-    title RadiheyRails
-    meta(name="viewport" content="width=device-width, user-scalable=no")
-    = stylesheet_link_tag    "application", :media => "all"
-    = javascript_include_tag "#{RadiheyNode::URL}/socket.io/socket.io.js"
-    = javascript_include_tag "application"
-    = csrf_meta_tags
-  body
-    = render 'components/header'
-    .container-fluid.content
-      .row-fluid
-        .span8.main_wrap
-          = yield
-        .span4.sidebar_wrap
-          = render 'components/sidebar'
-    = render 'components/footer'
-    = yield :bottom
+= content_for :head do
+  = javascript_include_tag "#{RadiheyNode::URL}/socket.io/socket.io.js"
+
+= content_for :body do
+  .span8.main_wrap
+    = yield
+  .span4.sidebar_wrap
+    = render 'components/sidebar'
+
+= render :partial => "layouts/base"
