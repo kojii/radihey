@@ -9,9 +9,9 @@ html
     = render 'components/header'
     .container-fluid.content
       .row-fluid
-        .span8
-          = yield
         .span4
           = render 'components/setting_sidebar'
+        .span8
+          = yield
     = render 'components/footer'
     = content_for :bottom
