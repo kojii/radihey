@@ -1,14 +1,50 @@
 @import 'mixins.css.less';
 .buttons-container {
   .clearfix();
+  margin-left: -12px;
   .button_wrap {
     width: 150px;
     height: 98px;
-    margin: 0 2% 10px 0;
+    margin: 0 0 10px 12px;
     float: left;
     position: relative;
     background-position: center;
     background-size: cover;
+    .button_label {
+      position: absolute;
+      top: 0;
+      left: 0;
+      margin: 20px 0 0 16px;
+      font-size: 30px;
+      color: #fff;
+      font-weight: bold;
+      &:hover {
+        text-decoration: none;
+      }
+      &.clicked {
+        animation-duration: 165ms;
+        animation-name: animation01;
+        animation-timing-function: linear;
+        animation-direction: normal;
+        animation-delay: 0s;
+
+        -webkit-animation-duration: 165ms;
+        -webkit-animation-name: animation01;
+        -webkit-animation-timing-function: linear;
+        -webkit-animation-direction: normal;
+        -webkit-animation-delay: 0s;
+      }
+    }
+    .click_target {
+      height: 100%;
+      width: 100%;
+      display: block;
+      cursor: pointer;
+      position: absolute;
+      top: 0;
+      left: 0;
+      .radiated-border(7px);
+    }
     &.hee {
       background-image: asset-url('button_hee.png');
       &.clicked {
@@ -45,40 +81,11 @@
         background-image: asset-url('button_hai_click.png');
       }
     }
-    .button_label {
-      position: absolute;
-      top: 0;
-      left: 0;
-      margin: 20px 0 0 16px;
-      font-size: 30px;
-      color: #fff;
-      font-weight: bold;
-      &:hover {
-        text-decoration: none;
-      }
-      &.clicked {
-        animation-duration: 165ms;
-        animation-name: animation01;
-        animation-timing-function: linear;
-        animation-direction: normal;
-        animation-delay: 0s;
-
-        -webkit-animation-duration: 165ms;
-        -webkit-animation-name: animation01;
-        -webkit-animation-timing-function: linear;
-        -webkit-animation-direction: normal;
-        -webkit-animation-delay: 0s;
-      }
-    }
-    .click_target {
-      height: 100%;
-      width: 100%;
-      display: block;
-      cursor: pointer;
-      position: absolute;
-      top: 0;
-      left: 0;
-      .radiated-border(7px);
+  }
+  @media (max-width: @viewport_mobile_max) {
+    .button_wrap {
+      width: 134px;
+      height: 86px;
     }
   }
 }
