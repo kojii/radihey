@@ -90,6 +90,7 @@ ja:
       email: 'メールアドレス'
       password: 'パスワード'
       login: 'ログインする'
+      join: 'アカウントをお持ちでない方はこちら'
 
   users:
     update:

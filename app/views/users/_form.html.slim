@@ -1,7 +1,6 @@
 = form_for(@user, html: {class: 'form-horizontal'}) do |f|
   - if @user.errors.any?
     #error_explanation
-      h2= t("mongoid.errors.models.user.title", count: @user.errors.count)
       ul
         - @user.errors.full_messages.each do |msg|
           li= msg
@@ -22,13 +21,19 @@
     = f.label t('.password') do
       label.control-label= t('.password')
       .controls
-        = f.password_field(:password, placeholder: t('.not_shown'))
+        - if @user.new_record?
+          = f.password_field(:password)
+        - else
+          = f.password_field(:password, placeholder: t('.not_shown'))
 
   .control-group
     = f.label t('.password_confirmation') do
       label.control-label= t('.password_confirmation')
       .controls
-        = f.password_field(:password_confirmation, placeholder: t('.not_shown'))
+        - if @user.new_record?
+          = f.password_field(:password_confirmation)
+        - else
+          = f.password_field(:password_confirmation, placeholder: t('.not_shown'))
 
   .control-group
     .controls

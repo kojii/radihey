@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  layout 'layouts/settings', only: [:edit, :update]
+  layout 'layouts/one_column'
   before_filter :login_user_only, only: [:edit, :update, :destroy]
 
   def new
@@ -8,7 +8,8 @@ class UsersController < ApplicationController
   end
 
   def create
-    if @user = User.create(params[:user])
+    @user = User.new(params[:user])
+    if @user.save
       redirect_to user_pre_registered_path(@user.id)
     else
       flash.now[:notice] = I18n.t("controllers.users.create.invalid_parameter")
@@ -34,6 +35,7 @@ class UsersController < ApplicationController
 
   def edit
     @user = login_user
+    render layout: 'layouts/settings'
   end
 
   def update
@@ -42,7 +44,7 @@ class UsersController < ApplicationController
     else
       @user = login_user
       flash.now[:notice] = I18n.t("controllers.users.create.invalid_parameter")
-      render :edit
+      render :edit, layout: 'layouts/settings'
     end
   end
 
@@ -56,5 +58,6 @@ class UsersController < ApplicationController
   end
 
   def leaved
+    render layout: 'layouts/settings'
   end
 end

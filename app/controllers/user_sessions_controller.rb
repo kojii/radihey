@@ -1,5 +1,6 @@
 # -*- encoding:utf-8 -*-
 class UserSessionsController < ApplicationController
+  layout 'layouts/one_column'
   respond_to :html
 
   def new
