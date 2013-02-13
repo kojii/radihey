@@ -3,7 +3,15 @@ class ButtonSesController < ApplicationController
   before_filter :login_user_only
 
   def index
-    @button_ses = login_user.button_ses.custom.desc(:updated_at)
+    @button_ses = login_user.button_ses.desc(:updated_at)
+  end
+
+  def list_all
+    button = Button.find(params[:button_id])
+    @button_ses_json = ButtonSe.where(_type: 'DefaultButtonSe').
+      concat(login_user.button_ses.desc(:updated_at)).
+      map{|s| [s.name, s.id, button.button_se_id == s.id ? 'selected' : '']}.
+      to_json
   end
 
   def new

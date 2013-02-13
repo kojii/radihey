@@ -38,6 +38,7 @@ ja:
       cancel: 'キャンセル'
       choose: '以下から選んでください。'
       custom_button_se: '（オリジナル効果音も作れます）'
+      reload_ses: '更新'
     new:
       title: '新規ボタン作成'
       owner_actions: '操作'
@@ -65,6 +66,8 @@ ja:
       destroy: '削除'
       used_by: '以下のボタンに使われています。'
       not_used: 'この効果音は使われていません。'
+    list_all:
+      reloaded: '更新しました'
     new:
       title: '効果音の新規作成'
       owner_actions: '操作メニュー'

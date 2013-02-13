@@ -17,6 +17,9 @@
     label.control-label= t('.button_se')
     .controls
       = f.select(:button_se_id, ButtonSe.all.map{|s| [s.name, s.id]}, 'selected' => @button.button_se_id)
+      = link_to list_all_button_ses_path(button_id: @button.id), class: 'reload_ses', remote: true do
+        i.icon-refresh
+        span.reload= t('.reload_ses')
       p= link_to t('.custom_button_se'), button_ses_path, target: '_blank'
 
   .control-group

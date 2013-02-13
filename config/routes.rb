@@ -18,7 +18,9 @@ RadiheyRails::Application.routes.draw do
   scope 'settings' do
     match 'account', to: 'users#edit', :as => :account_settings
     resources :buttons
-    resources :button_ses
+    resources :button_ses do
+      get 'list_all', :as => :list_all, :on => :collection
+    end
     resources :channels
   end
 
