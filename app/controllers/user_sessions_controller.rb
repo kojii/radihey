@@ -24,7 +24,7 @@ class UserSessionsController < ApplicationController
         redirect_to session[:login_origin]
         session.delete(:login_origin)
       else
-        redirect_to home_path(login_user.username)
+        redirect_to root_path(login_user.username)
       end
     else
       # ログイン失敗
