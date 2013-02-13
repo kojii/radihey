@@ -21,10 +21,10 @@ class UserSessionsController < ApplicationController
       headers["P3P"] = "CP='IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT'"
       notice         = parse_message I18n.t "controllers.user_sessions.login"
       if session[:login_origin]
-        redirect_to session[:login_origin]
+        redirect_to session[:login_origin], protocol: 'http'
         session.delete(:login_origin)
       else
-        redirect_to root_path
+        redirect_to root_path(protocol: 'http')
       end
     else
       # ログイン失敗

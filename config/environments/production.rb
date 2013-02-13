@@ -72,5 +72,6 @@ RadiheyRails::Application.configure do
     only: [
       '/login',
       '/join',
+      %r{^/settings/},
       '/users' ]
 end
