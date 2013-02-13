@@ -221,9 +221,11 @@ ja:
             email:
               blank: 'は必須項目です。'
               too_short: 'パスワードが短かすぎます。'
+              taken: 'そのメールアドレスは既に登録されています。'
             username:
               blank: 'は必須項目です。'
               too_short: 'パスワードが短かすぎます。'
+              taken: 'そのユーザ名は既に登録されています。'
             password:
               blank: 'は必須項目です。'
               too_short: 'パスワードが短かすぎます。'
