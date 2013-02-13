@@ -1,8 +1,8 @@
 defaults: &defaults
-  url: 'http://localhost:3030'
+  url: '//localhost:3030'
 
 development:
   <<: *defaults
 
 production:
-  url: 'http://54.249.232.232'
+  url: '//54.249.232.232'
