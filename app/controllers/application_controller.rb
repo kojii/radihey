@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-  helper_method :logged_in?, :login_user, :login_user_only, :parse_message, :current_user
+  helper_method :logged_in?, :login_user, :login_user_only, :parse_message, :current_user, :force_http
 
   private
   def logged_in?
@@ -51,6 +51,12 @@ class ApplicationController < ActionController::Base
     return raise ActionController::RoutingError.new('Not Found') unless @current_user
 
     return @current_user
+  end
+
+  def force_http
+    if request.protocol == "https://"
+      redirect_to protocol: 'https'
+    end
   end
 
 end

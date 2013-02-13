@@ -1,6 +1,7 @@
 class ChannelsController < ApplicationController
   layout 'layouts/settings'
   before_filter :login_user_only, except: [:broadcast]
+  before_filter :force_http, only: [:broadcast]
 
   def index
     @channels = login_user.channels.desc(:updated_at)

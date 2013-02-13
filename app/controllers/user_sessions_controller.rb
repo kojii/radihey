@@ -37,7 +37,7 @@ class UserSessionsController < ApplicationController
   #
   def destroy
     logout
-    redirect_to request.referer
+    redirect_to root_path(protocol: 'http')
   end
 
 private
