@@ -110,6 +110,11 @@ ja:
       title: '新規ユーザ登録'
     edit:
       title: 'アカウントの設定'
+    activate:
+      activated: '本登録が完了しました！ログインできます。'
+    pre_registered:
+      title: '仮登録が完了しました。'
+      direction: 'ご登録いただいたメールアドレス宛に、本登録のためのメールをお送りしました。'
     form:
       email: 'メールアドレス'
       new_username: '希望するユーザ名'

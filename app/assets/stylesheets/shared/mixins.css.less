@@ -98,3 +98,18 @@
     }
   }
 }
+
+.dialog(@width: 400px) {
+  max-width: @width;
+  margin: 0 auto;
+  h1 {
+    font-size: 30px;
+    margin: 0 auto 20px;
+  }
+  @media (max-width: @viewport_mobile_max) {
+    h1 {
+      font-size: 20px;
+      margin: 0 auto 10px;
+    }
+  }
+}

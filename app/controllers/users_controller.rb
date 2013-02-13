@@ -22,17 +22,14 @@ class UsersController < ApplicationController
   end
 
   def activate
-    redirect_to root_path unless user = User.where(pre_register_token: params[:pre_register_token], status: 'pre_registered').first
+    user = User.where(pre_register_token: params[:pre_register_token], status: 'pre_registered').first
+    redirect_to root_path unless user
     user.activate
     if user.save
-      redirect_to activated_path
+      redirect_to login_path(email: user.email), flash: {notice: I18n.t('users.activate.activated')}
     else
-      raise "Error"
+      raise "Error" #XXX
     end
-  end
-
-  def activated
-    redirect_to root_path if logged_in?
   end
 
   def edit
