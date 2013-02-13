@@ -8,9 +8,9 @@
     - @channels.each do |channel|
       li.channel
         = image_tag 'default-channel-icon.png', class: 'icon'
-        p= link_to channel.title, broadcast_channel_path(login_user.username, channel.id)
+        p= link_to channel.title, broadcast_channel_url(login_user.username, channel.id, protocol: 'http')
         p= channel.description
         ul.actions
           li= link_to t('.edit'), edit_channel_path(channel.id)
           li.separator |
-          li= link_to t('.destroy'), channel_path(channel.id), :method => :delete, :confirm => 'OK?'
+          li= link_to t('.destroy'), channel_path(channel.id), :method => :delete, :confirm => t('.confirm')

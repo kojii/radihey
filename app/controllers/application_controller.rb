@@ -53,10 +53,4 @@ class ApplicationController < ActionController::Base
     return @current_user
   end
 
-  def force_http
-    if request.protocol == "https://"
-      redirect_to protocol: 'https'
-    end
-  end
-
 end

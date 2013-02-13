@@ -7,4 +7,4 @@
     ul.actions
       li= link_to t('.back'), channels_path
       li.separator |
-      li= link_to t('.show_broadcast_page'), broadcast_channel_path(login_user.username, @channel.id), target: '_blank'
+      li= link_to t('.show_broadcast_page'), broadcast_channel_url(login_user.username, @channel.id, protocol: 'http'), target: '_blank'

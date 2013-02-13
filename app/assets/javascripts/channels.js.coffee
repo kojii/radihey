@@ -27,7 +27,7 @@ $ ->
     if (r)
       ust_uid = r[1]
       $.ajax {
-        url: "http://api.ustream.tv/json/channel/"+ust_uid+"/getInfo",
+        url: "https://api.ustream.tv/json/channel/"+ust_uid+"/getInfo",
         dataType: 'jsonp',
         jsonp: 'callback',
         timeout: 2000,

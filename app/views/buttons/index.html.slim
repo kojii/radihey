@@ -21,4 +21,4 @@
             p.used_by= t('.used_by')
             ul.used_by_channels
               - button.channels.each do |channel|
-                li= link_to channel.title, edit_channel_path(channel.id), target: '_blank'
+                li= link_to channel.title, broadcast_channel_url(channel.owner.username, channel.id, protocol: 'http'), target: '_blank'

@@ -1,7 +1,6 @@
 class ChannelsController < ApplicationController
   layout 'layouts/settings'
   before_filter :login_user_only, except: [:broadcast]
-  before_filter :force_http, only: [:broadcast]
 
   def index
     @channels = login_user.channels.desc(:updated_at)
@@ -50,7 +49,7 @@ class ChannelsController < ApplicationController
     if @channel.update_attributes(params[@channel.class.to_s.underscore])
       redirect_to edit_channel_path(@channel.id),
         flash: {notice: t('channels.update.saved',
-                          path_to_broadcast_page: broadcast_channel_path(login_user.username, @channel.id),
+                          path_to_broadcast_page: broadcast_channel_url(login_user.username, @channel.id, protocol: 'http'),
                          ).html_safe}
     else
       render :edit

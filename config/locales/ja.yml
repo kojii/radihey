@@ -139,6 +139,7 @@ ja:
       new: '新しいチャンネルをつくる'
       edit: '編集'
       destroy: '削除'
+      confirm: '本当に削除しますか？'
     broadcast:
       owner_actions: 'チャンネルオーナー専用の操作'
       edit: '編集'

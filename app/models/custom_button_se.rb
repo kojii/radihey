@@ -12,7 +12,7 @@ class CustomButtonSe < ButtonSe
   }
 
   validates_attachment :uploaded_audio, presence: true,
-    content_type: {content_type: ['audio/x-wav']},
+    content_type: {content_type: ['audio/wav','audio/x-wav']},
     size: {in: 0..1.megabytes}
 
   def audio
