@@ -63,6 +63,9 @@ gem 'delayed_job_mongoid'
 # template engine
 gem 'slim'
 
+# ssl
+gem 'rack-ssl-enforcer'
+
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
