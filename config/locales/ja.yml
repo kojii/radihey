@@ -1,4 +1,12 @@
 ja:
+  site_name: 'ラジへぇ'
+  copy: '&copy;ラジへぇ 2013'
+
+  layouts:
+    notifier:
+      greek: 'こんにちは。ラジへぇ運営チームです。'
+      thanks: '今後も ラジへぇ をよろしくお願いいたします。'
+
   components:
     sidebar:
       channels: 'チャンネル'
@@ -167,7 +175,6 @@ ja:
         subject: '[Radihey] 本登録完了'
       send_test_mail:
         subject: '[Radihey] テストメール'
-  copy: '&copy;ラジへぇ 2013'
 
   mongoid:
     attributes:
@@ -258,3 +265,20 @@ ja:
     error_messages:
       email_invalid: 'が正しくありません。'
       login_invalid: 'には、英数字か特定の記号（ . - _ @ ）のみ使えます。'
+
+  notifier:
+    send_test_mail:
+      body: 'テストメールです。'
+    send_pre_register_mail:
+      body: '
+        以下のURLをクリックすると、「ラジへぇ」への本登録が完了します。
+
+        <a href=%{url}>%{url}</a>
+
+        このメールに心当りのない方は、このメールを無視してください。'
+    send_activate_mail:
+      body: '
+        「ラジへぇ」への本登録が完了しました。
+
+        <a href=%{url}>こちら</a>よりログインしていただけます。
+      '

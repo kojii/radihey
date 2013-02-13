@@ -1,0 +1,9 @@
+#header(style='height: 40px; background-image: -moz-linear-gradient(center top , #4B2B1C, #24140B); background-image: -ms-linear-gradient(top, #4B2B1C, #24140B); background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#4B2B1C), to(#24140B)); background-image: -webkit-linear-gradient(top, #4B2B1C, #24140B); background-image: -o-linear-gradient(top, #4B2B1C, #24140B); background-image: linear-gradient(top, #4B2B1C, #24140B); ')
+  h1= image_tag "#{RadiheyRails::ASSET_HOST}#{image_path('logo.png')}"
+
+= t('.greek')
+= yield :body
+= t('.thanks')
+
+#footer(style='height: 20px; background-image: -moz-linear-gradient(center top , #4B2B1C, #24140B); background-image: -ms-linear-gradient(top, #4B2B1C, #24140B); background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#4B2B1C), to(#24140B)); background-image: -webkit-linear-gradient(top, #4B2B1C, #24140B); background-image: -o-linear-gradient(top, #4B2B1C, #24140B); background-image: linear-gradient(top, #4B2B1C, #24140B);')
+  p(style='color: #fff; text-align: center;')= t('copy').html_safe

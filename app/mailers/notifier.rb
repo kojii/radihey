@@ -1,5 +1,6 @@
 class Notifier < ActionMailer::Base
   helper :application
+  layout 'layouts/notifier'
 
   default_url_options[:host] = RadiheyRails::HOST
   default :from => I18n.t("mailers.notifier.default_from")

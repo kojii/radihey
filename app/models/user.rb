@@ -56,7 +56,7 @@ class User
   end
 
   def send_test_mail
-    Notifier.delay.send_test_mail(self.id, @callback_url)
+    Notifier.send_test_mail(self.id, @callback_url).deliver
   end
 
   class << self

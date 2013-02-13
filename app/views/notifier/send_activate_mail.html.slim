@@ -1,1 +1,2 @@
-activated
+= content_for :body do
+  p= t('.body', url: login_url).split("\n").map{|line| "<p>#{line}</p>"}.join("\n").html_safe

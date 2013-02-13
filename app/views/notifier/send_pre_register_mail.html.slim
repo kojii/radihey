@@ -1,5 +1,4 @@
-pre_registered
-p
-  = @user.username
-p
-  = link_to 'Activate', activate_url(@user.pre_register_token, host: RadiheyRails::HOST)
+- url = activate_url(@user.pre_register_token, host: RadiheyRails::HOST)
+
+= content_for :body do
+  p= t('.body', url: url).split("\n").map{|line| "<p>#{line}</p>"}.join("\n").html_safe

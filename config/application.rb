@@ -17,6 +17,11 @@ end
 
 module RadiheyRails
   HOST = ENV["RADIHEY_HOST"] || "radihey.jp"
+  if Rails.env.production?
+    ASSET_HOST = "https://radiheyrails-assets-kari.s3.amazonaws.com"
+  else
+    ASSET_HOST = "http://localhost:3000"
+  end
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
