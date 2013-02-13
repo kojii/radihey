@@ -1,2 +1,13 @@
-h1= t('.title')
-p= t('.summary')
+.main#show_top
+  .row-fluid
+    .cover.span12
+      p.cover_text ここにカバー画像が入ります。
+  .row-fluid
+    .span8
+      ul.channels
+        li.nav-header= t('.channels')
+        - Channel.desc(:updated_at).each do |channel|
+          li.channel= link_to channel.title, broadcast_channel_path(channel.owner.username, channel.id)
+    .span4
+      .like_box
+        p ここにLikeBoxなどが入ります。

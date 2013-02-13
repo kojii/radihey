@@ -18,6 +18,7 @@ ja:
     show:
       title: 'ラジへぇ'
       summary: 'ラジへぇは、・・で・・なサービスです！'
+      channels: 'チャンネルの一覧'
 
   buttons:
     index:
