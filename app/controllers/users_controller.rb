@@ -18,10 +18,11 @@ class UsersController < ApplicationController
   end
 
   def pre_registered
+    redirect_to root_path unless User.where(_id: params[:user_id], status: 'pre_registered').first
   end
 
   def activate
-    render_404 unless user = User.where(pre_register_token: params[:pre_register_token], status: 'pre_registered').first
+    redirect_to root_path unless user = User.where(pre_register_token: params[:pre_register_token], status: 'pre_registered').first
     user.activate
     if user.save
       redirect_to activated_path
@@ -31,6 +32,7 @@ class UsersController < ApplicationController
   end
 
   def activated
+    redirect_to root_path if logged_in?
   end
 
   def edit
