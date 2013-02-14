@@ -1,5 +1,7 @@
 = content_for :head do
   = stylesheet_link_tag "one_column", :media => "all"
+  = javascript_include_tag "one_column_layout"
+
 = content_for :body do
   .span12
     = yield

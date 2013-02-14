@@ -66,6 +66,9 @@ RadiheyRails::Application.configure do
   config.assets.precompile << "one_column.css"
   config.assets.precompile << "settings.css"
   config.assets.precompile << "broadcast.css"
+  config.assets.precompile << "one_column_layout.js"
+  config.assets.precompile << "settings_layout.js"
+  config.assets.precompile << "broadcast_layout.js"
 
   # SSL
   config.middleware.use Rack::SslEnforcer,
