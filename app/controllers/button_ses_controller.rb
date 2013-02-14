@@ -7,10 +7,10 @@ class ButtonSesController < ApplicationController
   end
 
   def list_all
-    button = Button.find(params[:button_id])
+    button = Button.where(_id: params[:button_id]).first
     @button_ses_json = ButtonSe.where(_type: 'DefaultButtonSe').
       concat(login_user.button_ses.desc(:updated_at)).
-      map{|s| [s.name, s.id, button.button_se_id == s.id ? 'selected' : '']}.
+      map{|s| [s.name, s.id, (button and button.button_se_id == s.id) ? 'selected' : '']}.
       to_json
   end
 
