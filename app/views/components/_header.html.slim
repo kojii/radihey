@@ -1,7 +1,7 @@
 header.navbar.navbar-fixed-top
   .navbar-inner
     .container-fluid
-      = link_to root_url(protocol: 'http') do
+      = link_to root_url(protocol: 'http'), id: 'brand' do
         = image_tag('logo.png')
       ul.nav.pull-right
         - if logged_in?
