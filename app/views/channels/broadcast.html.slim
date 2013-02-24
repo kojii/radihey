@@ -19,6 +19,9 @@
       ul.actions
         li= link_to t('.edit'), edit_channel_path(@channel.id)
 
+    #logs
+      textarea
+
 = content_for :bottom do
   javascript:
     client = new RadiheyNode('#{RadiheyNode::URL}', $.parseJSON('#{Hash.new.tap{|hash| @channel.buttons.each{|b| hash[b.id.to_s] = b.button_se.audio}}.to_json.html_safe}'))
