@@ -5,4 +5,4 @@ development:
   <<: *defaults
 
 production:
-  url: '//54.249.232.232'
+  url: '//54.249.245.32'
