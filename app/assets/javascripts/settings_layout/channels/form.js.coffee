@@ -13,7 +13,7 @@ window.change_ac_ust_submit = (show_warning=true) ->
 
 ac_ust_submit_handler = () ->
   url = $('#ustream_channel_url').val()
-  if url.match /^http:\/\/www\.ustream\.tv\/channel\/([^\/]+).*/
+  if r = url.match /^http:\/\/www\.ustream\.tv\/channel\/([^\/]+).*/
     ust_uid = r[1]
     $.ajax {
       url:      "https://api.ustream.tv/json/channel/#{ust_uid}/getInfo",
@@ -43,7 +43,7 @@ toggleActive = (click_target) ->
 
 $ ->
   window.change_ac_ust_submit(false) if $('#ustream_channel_url').length > 0
-  $('#ustream_channel_url').bind 'paste keyup', -> window.change_ac_ust_submit
-  $('.ac_ust_submit').on 'click', -> ac_ust_submit_handler
+  $('#ustream_channel_url').bind 'paste keyup', -> window.change_ac_ust_submit()
+  $('.ac_ust_submit').on 'click', -> ac_ust_submit_handler()
   $('.click_target').on  'click', -> toggleActive(this)
 
