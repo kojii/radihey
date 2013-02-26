@@ -15,14 +15,18 @@
       padding: 2px 6px;
     }
     ul.check_buttons {
-      .clearfix();
-      list-style: none;
-      margin: 0;
-      li {
-        float: left;
-        margin-right: 10px;
-        input[type='checkbox'] {
-          margin: 0;
+      display: none;
+    }
+    p.buttons_label {
+      border-bottom: 1px solid @border_color;
+    }
+    .buttons-container {
+      .button_wrap {
+        .click_target {
+          background-color: rgba(0,0,0,0.5);
+          &.selected {
+            background-color: transparent;
+          }
         }
       }
     }

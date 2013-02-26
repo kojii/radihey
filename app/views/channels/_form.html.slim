@@ -33,18 +33,27 @@
     .controls
       = f.text_area(:description)
 
-  .control-group
-    label.control-label= t('.buttons')
-    .controls
-      ul.check_buttons
-        - Button.where(_type: 'DefaultButton').each do |button|
-          li
-            = f.check_box :button_ids, {checked: @channel.buttons.include?(button), name: "#{@channel.class.to_s.underscore}[button_ids][]"}, button.id
-            = button.name
-        - login_user.buttons.each do |button|
-          li
-            = f.check_box :button_ids, {checked: @channel.buttons.include?(button), name: "#{@channel.class.to_s.underscore}[button_ids][]"}, button.id
-            = button.name
+  - buttons = Button.where(_type: 'DefaultButton')
+  ul.check_buttons
+    - buttons.each do |button|
+      li
+        = f.check_box :button_ids, {checked: @channel.buttons.include?(button), name: "#{@channel.class.to_s.underscore}[button_ids][]"}, button.id
+        = button.name
+    /- login_user.buttons.each do |button|
+    /  li
+    /    = f.check_box :button_ids, {checked: @channel.buttons.include?(button), name: "#{@channel.class.to_s.underscore}[button_ids][]"}, button.id
+    /    = button.name
+
+  p.buttons_label= t('.buttons')
+  .buttons-container
+    - buttons.each do |button|
+      .button_wrap(class='#{button.button_image.name}')
+        a.button_label= button.button_label
+        a.click_target(
+          data-button_id='#{button.id}'
+          onclick="new Audio('#{button.button_se.audio}').play();"
+          class="#{if @channel.buttons.include?(button) then 'selected' else '' end}"
+          )
 
   = f.hidden_field(:_type)
   .control-group

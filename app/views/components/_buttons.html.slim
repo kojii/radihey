@@ -2,4 +2,5 @@
   - buttons.each do |button|
     .button_wrap(class='#{button.button_image.name}')
       a.button_label= button.button_label
-      a.click_target(data-button_id='#{button.id}')
+      a.click_target(
+        data-button_id='#{button.id}')

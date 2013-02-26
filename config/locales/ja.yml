@@ -166,7 +166,7 @@ ja:
       update: '保存する'
       ac_ust: '以下の情報を自動入力する'
       invalid_url: '正しいUstreamの動画URLを入れてください。'
-      buttons: '使うボタン'
+      buttons: '使うボタンを選んでください'
   mailers:
     notifier:
       default_from: 'miyake@growmonth.ly'
