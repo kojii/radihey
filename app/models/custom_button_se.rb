@@ -7,7 +7,7 @@ class CustomButtonSe < ButtonSe
     :path           => '/button_se/:attachment/:id/:filename',
     :storage        => :s3,
     :url            => ':s3_alias_url',
-    :s3_host_alias  => 'radiheyrails-kari.s3.amazonaws.com',
+    :s3_host_alias  => 'radiheyrails.s3.amazonaws.com',
     :s3_credentials => File.join(Rails.root, 'config', 's3.yml')
   }
 
