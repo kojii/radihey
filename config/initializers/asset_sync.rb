@@ -1,9 +1,9 @@
 if defined?(AssetSync)
   AssetSync.configure do |config|
     config.fog_provider = 'AWS'
-    config.aws_access_key_id = 'AKIAIXBIF6NFJAW6KPVQ'
-    config.aws_secret_access_key = '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'
-    config.fog_directory = 'radiheyrails-assets-kari'
+    config.aws_access_key_id = 'AKIAIAHE5XZALNS3NPNQ'
+    config.aws_secret_access_key = '1cxjcwCwj58JGJ5bBSj1BqN4hNL/AhL/JpAF9HLt'
+    config.fog_directory = 'radiheyrails-assets'
 
     # Increase upload performance by configuring your region
     config.fog_region = 'ap-northeast-1'

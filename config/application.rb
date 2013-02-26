@@ -18,7 +18,7 @@ end
 module RadiheyRails
   HOST = ENV["RADIHEY_HOST"] || "radihey.jp"
   if Rails.env.production?
-    ASSET_HOST = "https://radiheyrails-assets-kari.s3.amazonaws.com"
+    ASSET_HOST = "https://radiheyrails-assets.s3.amazonaws.com"
   else
     ASSET_HOST = "http://localhost:3000"
   end
