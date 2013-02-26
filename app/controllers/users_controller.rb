@@ -17,18 +17,24 @@ class UsersController < ApplicationController
     end
   end
 
+  # 仮登録完了時
   def pre_registered
+    # 仮登録の状態ではないユーザの場合には、トップページにリダイレクトする。
     redirect_to root_path unless User.where(_id: params[:user_id], status: 'pre_registered').first
   end
 
+  # 仮登録メールのURLをクリックしてウェブサイトを訪問した時
   def activate
+    # paramsの中に含まれているトークンが、該当ユーザの仮登録トークンに一致していて、
+    # なおかつ、ユーザが仮登録の状態にあるときにだけ、アクティベーションを継続する。
+    # そうでないときには、トップページにリダイレクトする。
     user = User.where(pre_register_token: params[:pre_register_token], status: 'pre_registered').first
     redirect_to root_path unless user
     user.activate
     if user.save
       redirect_to login_path(email: user.email), flash: {notice: I18n.t('users.activate.activated')}
     else
-      raise "Error" #XXX
+      raise "An error occured in UsersController::activate when saving an user." #XXX
     end
   end
 
@@ -47,6 +53,8 @@ class UsersController < ApplicationController
     end
   end
 
+  # 退会処理
+  # TODO 画面は未実装
   def destroy
     login_user.leave
     if login_user.save
@@ -56,7 +64,7 @@ class UsersController < ApplicationController
     end
   end
 
+  # 退会後
   def leaved
-    render layout: 'layouts/settings'
   end
 end
