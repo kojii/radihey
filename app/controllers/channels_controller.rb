@@ -107,6 +107,7 @@ class ChannelsController < ApplicationController
     channel = Channel.find(params['channel_id'])
     persona = Persona.find(params['persona_id'])
     buttons = Button.where(:button_se_id.in => ButtonSe.where(persona_id: persona.id).map(&:id)).order_by(:_id => :asc)
-    render partial: 'components/buttons_for_edit_channel', locals: {buttons: buttons, channel: channel}
+    buttons = channel.button_sets.where(persona_id: persona.id).first.buttons
+    render partial: 'components/buttons', locals: {buttons: buttons, channel: channel}
   end
 end
