@@ -1,5 +1,5 @@
 defaults: &defaults
-  bucket: 'radiheyrails'
+  bucket: 'radiheyrails-development'
   access_key_id: 'AKIAIAHE5XZALNS3NPNQ'
   secret_access_key: '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'
 
@@ -8,3 +8,4 @@ development:
 
 production:
   <<: *defaults
+  bucket: 'radiheyrails'

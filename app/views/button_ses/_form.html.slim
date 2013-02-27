@@ -14,12 +14,12 @@
       = f.text_field(:name)
 
   .control-group
-    label.control-label= t('.uploaded_audio')
+    label.control-label= t('.audio')
     .controls
-      = f.file_field(:uploaded_audio)
-      - if @button_se.uploaded_audio.exists?
+      = f.file_field(:audio)
+      - if @button_se.audio.exists?
         p
-          = t('.uploaded_audio_file_name', filename: @button_se.uploaded_audio_file_name)
+          = t('.audio_file_name', filename: @button_se.audio_file_name)
           i.icon-music.play_se(data-sound-url='#{@button_se.audio}')
 
   .control-group

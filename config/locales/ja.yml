@@ -90,8 +90,8 @@ ja:
       saved: '保存しました。'
     form:
       name: '効果音の名前'
-      uploaded_audio: '効果音ファイル'
-      uploaded_audio_file_name: 'アップロード済ファイル: %{filename}'
+      audio: '効果音ファイル'
+      audio_file_name: 'アップロード済ファイル: %{filename}'
       create: '作成する'
       update: '保存する'
 
@@ -198,7 +198,7 @@ ja:
         button_image_id: '使用するボタン'
       button_se:
         name: '効果音の名前'
-        uploaded_audio: '効果音ファイル'
+        audio: '効果音ファイル'
     errors:
       models:
         ustream_channel:
@@ -247,9 +247,7 @@ ja:
               blank: 'は必須項目です。'
             audio:
               blank: 'は必須項目です。'
-            uploaded_audio:
-              blank: 'は必須項目です。'
-            uploaded_audio_content_type:
+            audio_content_type:
               invalid: 'には、wav形式のファイルを指定してください。'
         custom_button:
           attributes:
