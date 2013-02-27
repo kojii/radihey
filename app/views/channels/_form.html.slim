@@ -35,6 +35,9 @@
 
   - buttons = Button.where(:button_se_id.in => ButtonSe.where(persona_id: Persona.first.id).map(&:id)).order_by(:_id => :asc)
   p.buttons_label= t('.buttons')
+  = select_tag :persona,
+    options_for_select(Persona.all.map{|pr| [pr.name, pr.id]}.concat(Persona.all.map{|pr| [pr.name, pr.id]})),
+    onchange: "$.get('//#{RadiheyRails::HOST}/settings/channels/#{@channel.id}/get_buttons/'+this.value, function(data){$('.buttons-container').html(data)})"
   .buttons-container
     = render partial: 'components/buttons_for_edit_channel', locals: {buttons: buttons, channel: @channel}
 

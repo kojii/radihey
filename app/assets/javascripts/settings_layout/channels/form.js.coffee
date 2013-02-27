@@ -30,8 +30,7 @@ ac_ust_submit_handler = () ->
         $('#preview').val                     "#{data.url}"
     }
 
-toggleActive = (click_target) ->
-  console.log(click_target)
+toggle_active = (click_target) ->
   bid = $(click_target).attr('data-button_id')
   chk = $("input[type='checkbox'][value='#{bid}']").get(0)
   if chk.checked
@@ -45,5 +44,6 @@ $ ->
   window.change_ac_ust_submit(false) if $('#ustream_channel_url').length > 0
   $('#ustream_channel_url').bind 'paste keyup', -> window.change_ac_ust_submit()
   $('.ac_ust_submit').on 'click', -> ac_ust_submit_handler()
-  $('.click_target').on  'click', -> toggleActive(this)
+  $('.buttons-container').delegate '.click_target', 'click', (e) ->
+    toggle_active(e.target)
 

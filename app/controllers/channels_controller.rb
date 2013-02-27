@@ -7,7 +7,7 @@ class ChannelsController < ApplicationController
   end
 
   def broadcast
-    render_404 unless @channel = current_user.channels.find(params[:id])
+    render_404 unless @channel = current_user.channels.find(params[:channel_id])
     render layout: 'layouts/broadcast'
   end
 
@@ -94,5 +94,19 @@ class ChannelsController < ApplicationController
     return render_400 unless @channel = Channel.where(_id: params[:id]).first
     @channel.destroy
     redirect_to channels_path
+  end
+
+  def get_buttons_by_persona
+    channel = Channel.find(params['channel_id'])
+    persona = Persona.find(params['persona_id'])
+    buttons = Button.where(:button_se_id.in => ButtonSe.where(persona_id: persona.id).map(&:id)).order_by(:_id => :asc)
+    render partial: 'components/buttons_for_edit_channel', locals: {buttons: buttons, channel: channel}
+  end
+
+  def get_selected_buttons_by_persona
+    channel = Channel.find(params['channel_id'])
+    persona = Persona.find(params['persona_id'])
+    buttons = Button.where(:button_se_id.in => ButtonSe.where(persona_id: persona.id).map(&:id)).order_by(:_id => :asc)
+    render partial: 'components/buttons_for_edit_channel', locals: {buttons: buttons, channel: channel}
   end
 end

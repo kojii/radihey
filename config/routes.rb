@@ -21,11 +21,16 @@ RadiheyRails::Application.routes.draw do
     resources :button_ses do
       get 'list_all', :as => :list_all, :on => :collection
     end
-    resources :channels
+    resources :channels do
+      get 'get_buttons/:persona_id', to: 'channels#get_buttons_by_persona', :as => :get_buttons_by_persona
+    end
   end
 
   scope ":username" do
-    match '/:id', to: 'channels#broadcast', :as => :broadcast_channel
+    scope ':channel_id' do
+      match 'get_buttons/:persona_id', to: 'channels#get_selected_buttons_by_persona', :as => :get_selected_buttons_by_persona
+      match '', to: 'channels#broadcast', :as => :broadcast_channel
+    end
   end
 
   match '/:username', to: 'channels#index', :as => :home
