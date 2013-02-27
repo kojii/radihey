@@ -1,15 +1,16 @@
 class RadiheyNode
   constructor: (@host, @button_ses) ->
     @socket = io.connect(@host)
+    console.log(@socket)
     ws_client = @
 
     #### Handlers for UI
     ## 自分がボタンを押した。
     ## （このときのみ、HTMLタグに直接記述してあるonclickで音声を再生する。）
-    $('.button_wrap .click_target').bind 'click', (e) =>
+    $('.buttons-container').delegate '.click_target', 'click', (e) ->
       console.log('button_wrap_clicked')
       button_id = $(e.target).attr('data-button_id')
-      @socket.emit('pushed-button', {'button_id': button_id})
+      ws_client.socket.emit('pushed-button', {'button_id': button_id})
       $('#logs textarea').prepend("ボタンを押しました\n")
 
     #### Handlers for WebSocket
