@@ -11,7 +11,7 @@
       #video
         p= @channel.embed_tag.html_safe
       .buttons-container
-        = render partial: 'components/buttons', locals: {buttons: @channel.buttons.order_by(:_id => :asc)}
+        = render partial: 'components/buttons', locals: {buttons: @channel.button_sets.first.buttons.order_by(:_id => :asc)}
 
   - if @channel.is_owned_by?(login_user)
     #owner_actions
@@ -24,7 +24,7 @@
 
 = content_for :bottom do
   javascript:
-    client = new RadiheyNode('#{RadiheyNode::URL}', $.parseJSON('#{Hash.new.tap{|hash| @channel.buttons.each{|b| hash[b.id.to_s] = b.button_se.audio}}.to_json.html_safe}'))
+    client = new RadiheyNode('#{RadiheyNode::URL}', $.parseJSON('#{Hash.new.tap{|hash| @channel.button_sets.first.buttons.each{|b| hash[b.id.to_s] = b.button_se.audio}}.to_json.html_safe}'))
     client.socket.on('connected', function(data){
       client.socket.emit('join', {'room':'room#{@channel.id}'});
     });

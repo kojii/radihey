@@ -33,7 +33,7 @@
     .controls
       = f.text_area(:description)
 
-  - buttons = Button.where(:button_se_id.in => ButtonSe.where(persona_id: Persona.first.id).map(&:id))
+  - buttons = Button.where(:button_se_id.in => ButtonSe.where(persona_id: Persona.first.id).map(&:id)).order_by(:_id => :asc)
   p.buttons_label= t('.buttons')
   .buttons-container
     = render partial: 'components/buttons_for_edit_channel', locals: {buttons: buttons, channel: @channel}

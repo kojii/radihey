@@ -64,6 +64,22 @@ class ChannelsController < ApplicationController
 
   def update
     @channel = login_user.channels.find(params[:id])
+
+    selected_buttons = Button.where(:_id.in => params[@channel.class.to_s.underscore]['button_ids'])
+    button_texts = selected_buttons.map{|b| b.button_text}
+    buttons = Button.where(:button_text_id.in => button_texts.map(&:id))
+    @channel.button_sets.delete_all
+    Persona.all.each do |persona|
+      button_set = ButtonSet.new
+      button_set.persona = persona
+      buttons.each do |button|
+        if persona == button.button_se.persona
+          button_set.buttons << button
+        end
+      end
+      @channel.button_sets << button_set
+    end
+
     if @channel.update_attributes(params[@channel.class.to_s.underscore])
       redirect_to edit_channel_path(@channel.id),
         flash: {notice: t('channels.update.saved',

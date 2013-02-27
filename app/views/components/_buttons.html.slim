@@ -1,6 +1,6 @@
 - buttons.each do |button|
   .button_wrap(class='#{button.button_image.name}')
-    a.button_label= button.button_label
+    a.button_label= button.button_text.text
     a.click_target(
       data-button_id='#{button.id}'
       onclick="new Audio('#{button.button_se.audio}').play();"
