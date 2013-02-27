@@ -3,7 +3,6 @@ class Button
   include Mongoid::Timestamps
   include Mongoid::Paperclip
 
-  belongs_to :owner, class_name: User.to_s, :inverse_of => :buttons
   belongs_to :button_image
   belongs_to :button_se
   has_and_belongs_to_many :channels
