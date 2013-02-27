@@ -11,7 +11,7 @@
       #video
         p= @channel.embed_tag.html_safe
       .buttons
-        = render partial: 'components/buttons', locals: {buttons: @channel.buttons}
+        = render partial: 'components/buttons', locals: {buttons: @channel.buttons.order_by(:_id => :asc)}
 
   - if @channel.is_owned_by?(login_user)
     #owner_actions

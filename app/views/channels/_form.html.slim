@@ -33,7 +33,7 @@
     .controls
       = f.text_area(:description)
 
-  - buttons = Button.where(_type: 'DefaultButton')
+  - buttons = Button.all.order_by(:_id => :asc)
   ul.check_buttons
     - buttons.each do |button|
       li
