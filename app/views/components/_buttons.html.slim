@@ -5,3 +5,7 @@
       data-button_id='#{button.id}'
       onclick="new Audio('#{button.button_se.audio}').play();"
       )
+
+- if defined? on_change_selectbox
+  javascript:
+    window.ws_client.change_button_ses($.parseJSON('#{Hash.new.tap{|hash| channel.button_sets.first.buttons.each{|b| hash[b.id.to_s] = b.button_se.audio}}.to_json.html_safe}'));

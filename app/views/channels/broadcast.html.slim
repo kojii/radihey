@@ -27,7 +27,7 @@
 
 = content_for :bottom do
   javascript:
-    client = new RadiheyNode('#{RadiheyNode::URL}', $.parseJSON('#{Hash.new.tap{|hash| @channel.button_sets.first.buttons.each{|b| hash[b.id.to_s] = b.button_se.audio}}.to_json.html_safe}'))
-    client.socket.on('connected', function(data){
-      client.socket.emit('join', {'room':'room#{@channel.id}'});
+    window.ws_client = new RadiheyNode('#{RadiheyNode::URL}', $.parseJSON('#{Hash.new.tap{|hash| @channel.button_sets.first.buttons.each{|b| hash[b.id.to_s] = b.button_se.audio}}.to_json.html_safe}'))
+    window.ws_client.socket.on('connected', function(data){
+      window.ws_client.socket.emit('join', {'room':'room#{@channel.id}'});
     });

@@ -1,7 +1,7 @@
 class RadiheyNode
-  constructor: (@host, @buttons) ->
+  constructor: (@host, @button_ses) ->
     @socket = io.connect(@host)
-    client = @
+    ws_client = @
 
     #### Handlers for UI
     ## 自分がボタンを押した。
@@ -15,7 +15,7 @@ class RadiheyNode
     #### Handlers for WebSocket
     ## 他のユーザがボタンを押した。
     @socket.on 'another-pushed-button', (data) =>
-      new Audio(@buttons[data['button_id']]).play()
+      new Audio(@button_ses[data['button_id']]).play()
       $('#logs textarea').prepend("他のユーザがボタンを押しました\n")
 
     ## 自分が接続した。
@@ -35,5 +35,8 @@ class RadiheyNode
       $('.num-listeners').html(data.num_listeners)
       console.log('another-disconnected')
       $('#logs textarea').prepend("他のユーザが切断しました\n")
+
+  change_button_ses: (button_ses) ->
+    @button_ses = button_ses
 
 window.RadiheyNode = RadiheyNode

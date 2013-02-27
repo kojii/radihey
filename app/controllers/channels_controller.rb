@@ -108,6 +108,6 @@ class ChannelsController < ApplicationController
     persona = Persona.find(params['persona_id'])
     buttons = Button.where(:button_se_id.in => ButtonSe.where(persona_id: persona.id).map(&:id)).order_by(:_id => :asc)
     buttons = channel.button_sets.where(persona_id: persona.id).first.buttons
-    render partial: 'components/buttons', locals: {buttons: buttons, channel: channel}
+    render partial: 'components/buttons', locals: {buttons: buttons, channel: channel, on_change_selectbox: true}
   end
 end
