@@ -46,14 +46,7 @@
 
   p.buttons_label= t('.buttons')
   .buttons-container
-    - buttons.each do |button|
-      .button_wrap(class='#{button.button_image.name}')
-        a.button_label= button.button_label
-        a.click_target(
-          data-button_id='#{button.id}'
-          onclick="new Audio('#{button.button_se.audio}').play();"
-          class="#{if @channel.buttons.include?(button) then 'selected' else '' end}"
-          )
+    = render partial: 'components/buttons_for_edit_channel', locals: {buttons: buttons, channel: @channel}
 
   = f.hidden_field(:_type)
   .control-group
