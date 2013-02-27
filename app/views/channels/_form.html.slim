@@ -33,17 +33,7 @@
     .controls
       = f.text_area(:description)
 
-  - buttons = Button.all.order_by(:_id => :asc)
-  ul.check_buttons
-    - buttons.each do |button|
-      li
-        = f.check_box :button_ids, {checked: @channel.buttons.include?(button), name: "#{@channel.class.to_s.underscore}[button_ids][]"}, button.id
-        = button.name
-    /- login_user.buttons.each do |button|
-    /  li
-    /    = f.check_box :button_ids, {checked: @channel.buttons.include?(button), name: "#{@channel.class.to_s.underscore}[button_ids][]"}, button.id
-    /    = button.name
-
+  - buttons = Button.where(:button_se_id.in => ButtonSe.where(persona_id: Persona.first.id).map(&:id))
   p.buttons_label= t('.buttons')
   .buttons-container
     = render partial: 'components/buttons_for_edit_channel', locals: {buttons: buttons, channel: @channel}

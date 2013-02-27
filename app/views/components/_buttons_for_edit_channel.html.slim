@@ -1,8 +1,11 @@
 - buttons.each do |button|
+  - is_selected = channel.button_sets.map{|bs| bs.buttons.include?(button)}.include?(true)
   .button_wrap(class='#{button.button_image.name}')
-    a.button_label= button.button_label
+    a.button_label= button.button_text.text
     a.click_target(
       data-button_id='#{button.id}'
       onclick="new Audio('#{button.button_se.audio}').play();"
-      class="#{if channel.buttons.include?(button) then 'selected' else '' end}"
+      class="#{if is_selected then 'selected' else '' end}"
       )
+    = check_box_tag "#{channel.class.to_s.underscore}[button_ids][]",
+      button.id, is_selected

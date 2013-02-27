@@ -24,6 +24,11 @@ class ChannelsController < ApplicationController
 
   def create
     params_ch =  params['ustream_channel'] || params['radiko_channel']
+
+    selected_buttons = Button.where(:_id.in => params_ch['button_ids'])
+    button_texts = selected_buttons.map{|b| b.button_text}
+    buttons = Button.where(:button_text_id.in => button_texts.map(&:id))
+
     case params_ch[:_type]
     when UstreamChannel.to_s
       @channel = UstreamChannel.new(params_ch)
@@ -33,6 +38,19 @@ class ChannelsController < ApplicationController
       return render_404
     end
     @channel.owner = login_user
+
+    @channel.button_sets.delete_all
+    Persona.all.each do |persona|
+      button_set = ButtonSet.new
+      button_set.persona = persona
+      buttons.each do |button|
+        if persona == button.button_se.persona
+          button_set.buttons << button
+        end
+      end
+      @channel.button_sets << button_set
+    end
+
     if @channel.save
       redirect_to channels_path
     else
