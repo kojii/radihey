@@ -3,7 +3,8 @@ class ButtonSe
   include Mongoid::Timestamps
   include Mongoid::Paperclip
 
-  has_many :buttons
+  belongs_to :persona
+  has_many   :buttons
 
   field :name,  type: String
   has_mongoid_attached_file :audio, {
