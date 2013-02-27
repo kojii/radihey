@@ -10,6 +10,7 @@ class ButtonSe
     :path           => '/button_se/:attachment/:id/:filename',
     :storage        => :s3,
     :url            => ':s3_alias_url',
+    :s3_host_alias  => S3::HOST,
     :s3_credentials => File.join(Rails.root, 'config', 's3.yml')
   }
 
