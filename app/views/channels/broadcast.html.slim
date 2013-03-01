@@ -11,7 +11,7 @@
       #video
         p= @channel.embed_tag.html_safe
       = select_tag :persona,
-        options_for_select(Persona.all.map{|pr| [pr.name, pr.id]}.concat(Persona.all.map{|pr| [pr.name, pr.id]})),
+        options_for_select(Persona.all.map{|pr| [pr.name, pr.id]}),
         onchange: "$.get('//#{RadiheyRails::HOST}/#{@channel.owner.username}/#{@channel.id}/get_buttons/'+this.value, function(data){$('.buttons-container').html(data)})"
       .buttons-container
         = render partial: 'components/buttons', locals: {buttons: @channel.button_sets.first.buttons.order_by(:_id => :asc)}
