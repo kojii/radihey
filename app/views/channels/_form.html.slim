@@ -33,7 +33,7 @@
     .controls
       = f.text_area(:description)
 
-  - buttons = Button.where(:button_se_id.in => ButtonSe.where(persona_id: Persona.first.id).map(&:id)).order_by(:_id => :asc)
+  - buttons = Button.where(:button_se_id.in => ButtonSe.where(persona_id: Persona.first.try(:id)).map(&:id)).order_by(:_id => :asc)
   p.buttons_label= t('.buttons')
   = select_tag :persona,
     options_for_select(Persona.all.map{|pr| [pr.name, pr.id]}.concat(Persona.all.map{|pr| [pr.name, pr.id]})),

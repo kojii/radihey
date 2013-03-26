@@ -160,7 +160,7 @@ ja:
       title: 'チャンネルのタイトル'
       description: 'チャンネルの説明'
       type: 'チャンネルの種類'
-      url: 'Ustream動画のURL http://www.ustream.tv/channel/チャンネル名'
+      url: 'Ustream動画のURL'
       station_id: 'ラジオ放送局'
       create: 'チャンネルを作成する'
       update: '保存する'
