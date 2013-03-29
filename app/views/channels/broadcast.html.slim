@@ -11,10 +11,11 @@
       #video
         p= @channel.embed_tag.html_safe
       = select_tag :button_set,
-        options_for_select(@channel.button_sets.map{|set| [set.name, set.id]}),
-        onchange: "$.get('#{selected_buttons_channel_path(@channel.id, '')}' + this.value)"
+        options_for_select(@channel.button_sets.map{|set| [set.name, set.id]}, selected: params[:set]),
+        onchange: "location.href = location.href + '?set=' + this.value";
+      - set = params[:set].present? ? @channel.button_sets.where(_id: params[:set]).first : @channel.button_sets.first
       .buttons-container
-        = render partial: 'components/buttons', locals: {buttons: @channel.button_sets.first.buttons.asc(:tag)}
+        = render partial: 'components/buttons', locals: {buttons: set.buttons.asc(:tag)}
 
   - if @channel.is_owned_by?(login_user)
     #owner_actions
