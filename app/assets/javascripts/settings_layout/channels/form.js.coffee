@@ -31,8 +31,8 @@ ac_ust_submit_handler = () ->
     }
 
 toggle_active = (click_target) ->
-  bid = $(click_target).attr('data-button_id')
-  chk = $("input[type='checkbox'][value='#{bid}']").get(0)
+  tag = $(click_target).attr('data-tag')
+  chk = $("input[type='checkbox'][value='#{tag}']").get(0)
   if chk.checked
     chk.checked = false
     $(click_target).removeClass('selected')
@@ -46,4 +46,3 @@ $ ->
   $('.ac_ust_submit').on 'click', -> ac_ust_submit_handler()
   $('.buttons-container').delegate '.click_target', 'click', (e) ->
     toggle_active(e.target)
-

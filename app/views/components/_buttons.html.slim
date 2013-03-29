@@ -1,11 +1,15 @@
-- buttons.each do |button|
-  .button_wrap(class='#{button.button_image.name}')
-    a.button_label= button.button_text.text
+- buttons.asc(:tag).each do |button|
+  .button_wrap(class='tag-#{button.tag}')
+    a.button_label= button.text
     a.click_target(
       data-button_id='#{button.id}'
-      onclick="new Audio('#{button.button_se.audio}').play();"
+      onclick="new Audio('#{button.audio_file.audio}').play();"
       )
 
 - if defined? on_change_selectbox
   javascript:
-    window.ws_client.change_button_ses($.parseJSON('#{Hash.new.tap{|hash| channel.button_sets.first.buttons.each{|b| hash[b.id.to_s] = b.button_se.audio}}.to_json.html_safe}'));
+    window.ws_client.change_button_ses($.parseJSON('#{Hash.new.tap{|hash| channel.button_sets.first.buttons.each{|b| hash[b.id.to_s] = b.audio_file.audio}}.to_json.html_safe}'));
+
+= content_for :external do
+  style(type="text/less")
+    = render partial: "components/style", locals: { buttons: buttons }

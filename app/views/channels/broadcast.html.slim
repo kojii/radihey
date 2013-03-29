@@ -10,11 +10,11 @@
     .video-and-buttons.clearfix
       #video
         p= @channel.embed_tag.html_safe
-      = select_tag :persona,
-        options_for_select(Persona.all.map{|pr| [pr.name, pr.id]}),
-        onchange: "$.get('//#{RadiheyRails::HOST}/#{@channel.owner.username}/#{@channel.id}/get_buttons/'+this.value, function(data){$('.buttons-container').html(data)})"
+      = select_tag :button_set,
+        options_for_select(@channel.button_sets.map{|set| [set.name, set.id]}),
+        onchange: "$.get('#{selected_buttons_channel_path(@channel.id, '')}' + this.value)"
       .buttons-container
-        = render partial: 'components/buttons', locals: {buttons: @channel.button_sets.first.buttons.order_by(:_id => :asc)}
+        = render partial: 'components/buttons', locals: {buttons: @channel.button_sets.first.buttons.asc(:tag)}
 
   - if @channel.is_owned_by?(login_user)
     #owner_actions
@@ -27,7 +27,7 @@
 
 = content_for :bottom do
   javascript:
-    window.ws_client = new RadiheyNode('#{RadiheyNode::URL}', $.parseJSON('#{Hash.new.tap{|hash| @channel.button_sets.first.buttons.each{|b| hash[b.id.to_s] = b.button_se.audio}}.to_json.html_safe}'))
+    window.ws_client = new RadiheyNode('#{RadiheyNode::URL}', $.parseJSON('#{Hash.new.tap{|hash| @channel.button_sets.first.buttons.each{|b| hash[b.id.to_s] = b.audio_file.audio}}.to_json.html_safe}'))
     window.ws_client.socket.on('connected', function(data){
       window.ws_client.socket.emit('join', {'room':'room#{@channel.id}'});
     });

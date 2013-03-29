@@ -3,7 +3,7 @@ class ButtonImage
   include Mongoid::Timestamps
   include Mongoid::Paperclip
 
-  has_many :button
+  has_many :buttons, :dependent => :destroy
 
   field :name, type: String
   has_mongoid_attached_file :image, {

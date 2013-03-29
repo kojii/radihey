@@ -1,0 +1,12 @@
+.modal-body
+  .gallery
+    - ButtonImage.all.each do |image|
+      .wrap
+        = image_tag image.image, "data-button_image" => image.id
+        p = image.name
+  .new
+    = form_for ButtonImage.new, remote: true do |f|
+      = text_field_tag "button_image[name]", nil, placeholder: "名前"
+      label アイコン #{ file_field_tag "button_image[image]" }
+      label クリックした時のアイコン #{ file_field_tag "button_image[image_clicked]" }
+      = link_to "登録", "#", class: "submit btn btn-success", "data-uploadpath" => button_images_path

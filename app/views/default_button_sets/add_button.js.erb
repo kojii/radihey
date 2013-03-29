@@ -1,0 +1,4 @@
+var html = "<%= escape_javascript(render partial: "button", locals: {button: Button.new, index: params[:index]}) %>";
+var $html = $(html);
+$html.data("index", $(".btn-row").size());
+$("tbody").append($html);

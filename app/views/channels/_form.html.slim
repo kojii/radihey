@@ -33,13 +33,11 @@
     .controls
       = f.text_area(:description)
 
-  - buttons = Button.where(:button_se_id.in => ButtonSe.where(persona_id: Persona.first.try(:id)).map(&:id)).order_by(:_id => :asc)
   p.buttons_label= t('.buttons')
-  = select_tag :persona,
-    options_for_select(Persona.all.map{|pr| [pr.name, pr.id]}.concat(Persona.all.map{|pr| [pr.name, pr.id]})),
-    onchange: "$.get('//#{RadiheyRails::HOST}/settings/channels/#{@channel.id}/get_buttons/'+this.value, function(data){$('.buttons-container').html(data)})"
+  = select_tag :button_set, options_for_select(DefaultButtonSet.asc(:created_at).map{|set| [set.name, set.id]}),
+  onchange: "$.get('#{buttons_channel_path(@channel.id, '')}' + this.value)"
   .buttons-container
-    = render partial: 'components/buttons_for_edit_channel', locals: {buttons: buttons, channel: @channel}
+    = render partial: 'components/buttons_for_edit_channel', locals: {buttons: DefaultButtonSet.asc(:created_at).first.buttons, channel: @channel}
 
   = f.hidden_field(:_type)
   .control-group

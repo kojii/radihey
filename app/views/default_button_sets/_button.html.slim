@@ -1,0 +1,19 @@
+tr.btn-row[data-index="#{(defined? index) ? index : 0}"]
+  td.tag   = text_field_tag "buttons[][tag]", button.tag
+  td.text  = text_field_tag "buttons[][text]", button.text
+  td.audio
+    - if button.audio_file
+      span = button.audio_file.audio_file_name
+      a.remove[href="#{upload_default_button_sets_path}"] Ｘ
+    - else
+      = file_field_tag "audio", "data-uploadpath" => upload_default_button_sets_path
+  td.image = link_to "#", class: "choose-image" do
+    - if button.button_image
+      = image_tag button.button_image.image
+    - else
+      = image_tag "default-channel-icon.png"
+  td.play
+    a.btn.play[href="#{button.audio_file.try(:audio)}"]
+      i.icon-bullhorn
+  = hidden_field_tag "buttons[][audio_file_id]", button.audio_file_id, class: "audio-id"
+  = hidden_field_tag "buttons[][button_image_id]", button.button_image_id, class: "image-id"

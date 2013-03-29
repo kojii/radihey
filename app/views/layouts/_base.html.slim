@@ -4,7 +4,9 @@ html
     meta(charset="UTF-8")
     meta(name="viewport" content="width=device-width, user-scalable=no")
     = csrf_meta_tags
+    = yield :external
     = yield :head
+
   body
     = render 'components/header'
     .container-fluid.content
