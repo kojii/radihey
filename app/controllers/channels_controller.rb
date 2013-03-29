@@ -39,7 +39,7 @@ class ChannelsController < ApplicationController
     DefaultButtonSet.all.each do |default|
       set = ButtonSet.new
       set.name = default.name
-      default.buttons.where(:tag.in => params[:button_tags]).each do |button|
+      default.buttons.where(:tag.in => params[:ustream_channel][:button_tags]).each do |button|
         set << button
       end
       @channel.button_sets << button_set
