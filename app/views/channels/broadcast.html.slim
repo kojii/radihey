@@ -12,7 +12,7 @@
         p= @channel.embed_tag.html_safe
       = select_tag :button_set,
         options_for_select(@channel.button_sets.map{|set| [set.name, set.id]}, selected: params[:set]),
-        onchange: "location.href = location.href + '?set=' + this.value";
+        onchange: "location.href = '#{broadcast_channel_path(@channel.owner.username, @channel)}' + '?set=' + this.value";
       - set = params[:set].present? ? @channel.button_sets.where(_id: params[:set]).first : @channel.button_sets.first
       .buttons-container
         = render partial: 'components/buttons', locals: {buttons: set.buttons.asc(:tag)}
