@@ -1,11 +1,16 @@
-- buttons.each do |button|
-  - is_selected = channel.button_sets.map{|bs| bs.buttons.include?(button)}.include?(true)
-  .button_wrap(class='#{button.button_image.name}')
-    a.button_label= button.button_text.text
+- buttons.asc(:tag).each do |button|
+  - set = channel.button_sets.first
+  - is_selected = set ? set.buttons.where(tag: button.tag).first.present? : false
+  .button_wrap(class='tag-#{button.tag}')
+    a.button_label= button.text
     a.click_target(
-      data-button_id='#{button.id}'
-      onclick="new Audio('#{button.button_se.audio}').play();"
+      data-tag='#{button.tag}'
+      onclick="new Audio('#{button.audio_file.audio}').play();"
       class="#{if is_selected then 'selected' else '' end}"
       )
-    = check_box_tag "#{channel.class.to_s.underscore}[button_ids][]",
-      button.id, is_selected
+    = check_box_tag "#{channel.class.to_s.underscore}[button_tags][]",
+      button.tag, is_selected
+
+= content_for :external do
+  style(type="text/less")
+    = render partial: "components/style", locals: { buttons: buttons }

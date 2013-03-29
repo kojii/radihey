@@ -4,11 +4,11 @@ class Button
   include Mongoid::Paperclip
 
   belongs_to :button_image
-  belongs_to :button_se
-  belongs_to :button_text
+  belongs_to :audio_file
 
-  field :name, type: String
+  field :tag,  type: Integer
+  field :text, type: String
 
-  validates :name, :button_image_id, :button_se_id, :button_text_id, presence: true
+  validates :tag, :text, :audio_file_id, presence: true
 
 end

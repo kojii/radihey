@@ -1,0 +1,23 @@
+= form_for(@button_set) do |f|
+  span.title-suffix ‘ #{f.text_field("name")}
+  span.title-prefix = t(".title_prefix")
+  .buttons
+    table.table.table-bordered
+      tr
+        th = t(".tag")
+        th = t(".text")
+        th = t(".audio")
+        th = t(".image")
+        th = t(".play")
+      - @button_set.buttons.asc(:tag).each_with_index do |button, i|
+        = render partial: "button", locals: { button: button, index: i }
+      = render partial: "button", locals: { button: Button.new, index: @button_set.buttons.count }
+    .control
+      = link_to "ボタンを追加", add_button_default_button_sets_path, remote: true,  class: "add-button btn btn-primary"
+  p.submit = f.submit "保存", class: "btn btn-success"
+
+#image-dialog.modal.hide.fade
+  .modal-header
+    button.close[type="button" data-dismiss="modal" aria-hidden=true] ×
+    h3 = t(".dialog_title")
+  = render partial: "image_gallery"

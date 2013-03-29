@@ -16,6 +16,7 @@ ja:
       channels_settings: 'チャンネルの管理'
       buttons_settings: 'オリジナルボタンの管理'
       button_ses_settings: 'オリジナル効果音の管理'
+      default_button_set_settings: 'デフォルトボタンセットの管理'
     header:
       join: '新規登録'
       login: 'ログイン'
@@ -27,6 +28,22 @@ ja:
       title: 'ラジへぇ'
       summary: 'ラジへぇは、・・で・・なサービスです！'
       channels: 'チャンネルの一覧'
+
+  default_button_sets:
+    index:
+      title: "デフォルトボタンセットの管理"
+      new: "新規ボタンセット作製"
+      copy: "複製"
+    edit:
+    form:
+      title: "'%{name}セット'の編集"
+      tag:   "タグ"
+      text:  "テキスト"
+      audio: "音声ファイル"
+      image: "アイコン"
+      play:  "試聴"
+      title_prefix: " Set ’ の編集"
+      dialog_title: "ボタンで使用するアイコンを選択して下さい"
 
   buttons:
     index:
@@ -160,7 +177,7 @@ ja:
       title: 'チャンネルのタイトル'
       description: 'チャンネルの説明'
       type: 'チャンネルの種類'
-      url: 'Ustream動画のURL http://www.ustream.tv/channel/チャンネル名'
+      url: 'Ustream動画のURL'
       station_id: 'ラジオ放送局'
       create: 'チャンネルを作成する'
       update: '保存する'

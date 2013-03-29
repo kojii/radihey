@@ -1,0 +1,8 @@
+h2 = t(".title")
+table.table.table-hover
+  - DefaultButtonSet.all.each do |button_set|
+    tr
+      td= link_to button_set.name, edit_default_button_set_path(button_set)
+      td= link_to t(".copy"), new_default_button_set_path(id: button_set.id)
+.new
+  = link_to t(".new"), new_default_button_set_path

@@ -1,0 +1,12 @@
+.buttons-container {
+  .button_wrap {
+  <% buttons.each do |button| %>
+    &.tag-<%= button.tag %> {
+      background-image: url(<%= button.button_image.image %>);
+      &.clicked {
+        background-image: url(<%= button.button_image.image_clicked %>);
+      }
+    }
+  <% end -%>
+  }
+}

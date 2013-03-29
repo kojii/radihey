@@ -1,0 +1,101 @@
+@import 'shared/mixins.css.less';
+#new_button_sets, #edit_button_sets {
+  .title-suffix, .title-prefix {
+    input[type='text'] {
+      height: 1.2em;
+      font-size:1.0em;
+      width: 200px;
+    }
+    font-size: 2em;
+    font-weight: bold;
+  }
+  .buttons {
+    .control {
+      padding: 10px;
+      text-align: right;
+    }
+    .radiated-border(5px);
+    .shadowed-box(0 2px 5px rgba(0, 0, 0, 0.5));
+    background: #fff;
+    table {
+      margin-bottom: 0px;
+      border: none;
+      border-radius: none;
+      border-bottom: solid 1px #ddd;
+      th {
+        text-align: center;
+      }
+      td {
+        text-align: center;
+        &.tag {
+          width: 30px;
+          input[type='text'] {
+            margin: 0px;
+            padding: 0 10px;
+            height: 38px;
+            width: 30px;
+          }
+        }
+        &.text {
+          width: 150px;
+          input[type='text'] {
+            margin: 0px;
+            padding: 0 10px;
+            height: 38px;
+            width: 130px;
+          }
+        }
+        &.audio {
+          width: 100px;
+          input[type='file'] {
+            width: 96px;
+          }
+          .remove {
+            background: #f00;
+            color: #fff;
+            margin-left: 5px;
+          }
+        }
+        &.image {
+          width: 40px;
+          img {
+            height: 40px;
+          }
+        }
+        &.play {
+          width: 40px;
+          i {
+            line-height: 30px;
+            font-size: 22px;
+          }
+        }
+      }
+    }
+  }
+  .submit {
+    margin: 20px 0;
+    text-align: right;
+  }
+  #image-dialog {
+    width: 720px;
+    .modal-body {
+      max-height: 500px;
+      .gallery {
+        .wrap {
+          display: inline-block;
+          img {
+            width: 150px;
+            margin: 10px;
+          }
+          p {
+            text-align: center;
+          }
+        }
+      }
+      .new {
+        padding-top: 20px;
+        border-top: solid 1px #ddd;
+      }
+    }
+  }
+}

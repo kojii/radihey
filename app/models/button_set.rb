@@ -4,7 +4,9 @@ class ButtonSet
 
   embedded_in :channel
 
-  belongs_to :persona
-  has_and_belongs_to_many :buttons
+  has_and_belongs_to_many :buttons,  inverse_of: nil
+  field :name
+
+  validates :name, :presence => true
 
 end
