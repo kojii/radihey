@@ -40,9 +40,9 @@ class ChannelsController < ApplicationController
       set = ButtonSet.new
       set.name = default.name
       default.buttons.where(:tag.in => params[:ustream_channel][:button_tags]).each do |button|
-        set << button
+        set.buttons << button
       end
-      @channel.button_sets << button_set
+      @channel.button_sets << set
     end
 
     if @channel.save
